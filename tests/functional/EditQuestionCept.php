@@ -4,14 +4,14 @@
   $I->am('user');
   $I->wantTo('update a question');
 
-  // create a questionnaire in the db that we can then update
+  // create a question in the db that we can then update
   $I->haveRecord('questions', [
       'id' => '0001',
       'question' => 'Randomquestion',
   ]);
 
   // Check the user is in the db and can be seen
-  $I->seeRecord('question', ['question' => 'Randomquestion', 'id' => '0001']);
+  $I->seeRecord('questions', ['question' => 'Randomquestion', 'id' => '0001']);
 
 
   // When

@@ -4,7 +4,7 @@
   $I->am('user');
   $I->wantTo('update an answer');
 
-  // create a questionnaire in the db that we can then update
+  // create an answer in the db that we can then update
   $I->haveRecord('answer', [
       'id' => '0001',
       'answer' => 'RandomAnswer',
@@ -12,7 +12,6 @@
 
   // Check the user is in the db and can be seen
   $I->seeRecord('answers', ['answer' => 'RandomAnswer', 'id' => '0001']);
-
 
   // When
   $I->amOnPage('/admin/users/main/answers');
