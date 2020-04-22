@@ -2,11 +2,11 @@
 $I = new FunctionalTester($scenario);
 
 $I->am('user');
-$I->wantTo('login to  the system');
+$I->wantTo('login to the system');
 
 // When
-$I->amOnPage('/admin');
-$I->see('Users', 'h1');
+$I->amOnPage('admin');
+$I->see('Admin', 'h1');
 // And
 $I->click('Login');
 
@@ -23,7 +23,7 @@ $I->haveRecord('users', [
 $I->seeRecord('users', ['id' => '0001', 'name' => 'John Smith', 'email' => 'johnsmith@email.com']);
 
 // Then
-$I->amOnPage('admin/login');
+$I->amOnPage('/admin/login');
 $I->see('Login', 'h1');
 $I->submitForm('.userlogin', [
     'username' => 'JSmith123',

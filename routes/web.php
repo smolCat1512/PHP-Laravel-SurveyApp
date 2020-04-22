@@ -15,10 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/users', function() {
-  return view ('admin.users');
+Route::get('admin', function() {
+  return view ('admin.admin');
 });
 
-Route::get('admin/users/login', function() {
+Route::get('/admin/login', function(){
   return view ('admin.login');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
+
+Route::group(['middleware' => ['web']], function () {
+    //
 });
