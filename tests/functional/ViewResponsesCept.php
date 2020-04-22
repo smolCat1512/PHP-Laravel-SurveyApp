@@ -5,7 +5,7 @@ $I->am('user');
 $I->wantTo('view responses');
 
 // When
-$I->amOnPage('/admin/users/main/responses');
+$I->amOnPage('/admin/responses');
 $I->see('Responses', 'h1');
 // And
 $I->click('View Responses');

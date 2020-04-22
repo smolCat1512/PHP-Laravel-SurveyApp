@@ -5,7 +5,7 @@ $I->am('respondent');
 $I->wantTo('view questionnaires');
 
 // When
-$I->amOnPage('/respondents/questionnaires');
+$I->amOnPage('/questionnaires');
 $I->see('Live Questionnaires', 'h1');
 // And
 $I->click('View Questionnaires');

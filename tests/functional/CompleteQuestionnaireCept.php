@@ -5,17 +5,17 @@ $I->am('respondent');
 $I->wantTo('complete a live questionnaire');
 
 // When
-$I->amOnPage('/respondents/questionnaires');
-$I->see('Live Questionnaires', 'h1');
+$I->amOnPage('/questionnaires');
+$I->see('Questionnaires', 'h1');
 // And
-$I->click('View Questionnaires');
+$I->click('Test');
 
 // When
-$I->amOnPage('/respondents/questionnaires/livequestionnaires');
+$I->amOnPage('/questionnaires');
 $I->see('Questionnaires', 'h1');
 $I->see('Test Questionnaire');
 // And
-$I->click('Take Questionnaire');
+$I->click('Complete Questionnaire', 'button');
 
 // create a questionnaire in the db that we can then update
 $I->haveRecord('questionnaires', [
@@ -25,7 +25,7 @@ $I->haveRecord('questionnaires', [
 ]);
 
 // Then
-$I->amOnPage('/respondents/questionnaires/livequestionnaires/Test Questionnaire');
+$I->amOnPage('/questionnaires/(\d+)~');
 // And
 $I->see('Test Questionnaire', 'h1');
 $I->submitForm('.agreeethics', [
@@ -53,7 +53,7 @@ $I->haveRecord('answer', [
 ]);
 
 // Then
-$I->amOnPage('/respondents/questionnaires/livequestionnaires/Test Questionnaire/question 1');
+$I->amOnPage('/questionnaires/(\d+)~/question 1');
 // And
 $I->see('Test Questionnaire', 'h1');
 $I->see('Question 1', 'h2');

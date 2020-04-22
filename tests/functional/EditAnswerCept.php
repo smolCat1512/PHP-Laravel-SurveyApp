@@ -14,7 +14,7 @@
   $I->seeRecord('answers', ['answer' => 'RandomAnswer', 'id' => '0001']);
 
   // When
-  $I->amOnPage('/admin/users/main/answers');
+  $I->amOnPage('/admin/answers');
 
   // then
 
@@ -25,7 +25,7 @@
   $I->click('a', ['name' => '0001']);
 
   // Then
-  $I->amOnPage('/admin/users/main/answers/0001/edit');
+  $I->amOnPage('/admin/answers/(\d+)~/edit');
   // And
   $I->see('Edit Answer - RandomAnswer', 'h1');
 
@@ -35,7 +35,7 @@
   $I->click('Update Answer');
 
   // Then
-  $I->seeCurrentUrlEquals('/admin/users/main/answers');
+  $I->seeCurrentUrlEquals('/admin/answers');
   $I->seeRecord('answers', ['answer' => 'UpdatedAnswer']);
   $I->see('Answers', 'h1');
   $I->see('UpdatedAnswer');

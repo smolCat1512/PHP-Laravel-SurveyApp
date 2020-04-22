@@ -15,7 +15,7 @@ $I->seeRecord('answers', ['answer' => 'RandomAnswer', 'id' => '9999']);
 
 
 // When
-$I->amOnPage('/admin/users/main/answers');
+$I->amOnPage('/admin/answers');
 
 // then
 
@@ -26,6 +26,6 @@ $I->seeElement('a', ['name' => '9999']);
 $I->click('Delete RandomAnswer');
 
 // Then
-$I->amOnPage('/admin/users/main/answers');
+$I->amOnPage('/admin/answers');
 // And
 $I->dontSeeElement('a', ['name' => '9999']);

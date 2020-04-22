@@ -15,7 +15,7 @@
 
 
   // When
-  $I->amOnPage('/admin/users/main/questions');
+  $I->amOnPage('/admin/questions');
 
   // then
 
@@ -26,7 +26,7 @@
   $I->click('a', ['name' => '0001']);
 
   // Then
-  $I->amOnPage('/admin/users/main/questions/0001/edit');
+  $I->amOnPage('/admin/questions/(\d+)~/edit');
   // And
   $I->see('Edit Question - Randomquestion', 'h1');
 
@@ -36,7 +36,7 @@
   $I->click('Update Question');
 
   // Then
-  $I->seeCurrentUrlEquals('/admin/users/main/questions');
+  $I->seeCurrentUrlEquals('/admin/questions');
   $I->seeRecord('questions', ['question' => 'UpdatedQuestion']);
   $I->see('Questions', 'h1');
   $I->see('UpdatedQuestion');

@@ -16,7 +16,7 @@
 
 
   // When
-  $I->amOnPage('/admin/users/main/questionnaires');
+  $I->amOnPage('/admin/questionnaires');
 
   // then
 
@@ -27,7 +27,7 @@
   $I->click('a', ['name' => '0001']);
 
   // Then
-  $I->amOnPage('/admin/users/main/questionnaires/0001/edit');
+  $I->amOnPage('/admin/questionnaires/(\d+)~/edit');
   // And
   $I->see('Edit Questionnaire - Randomtitle', 'h1');
 
@@ -37,7 +37,7 @@
   $I->click('Update Questionnaire');
 
   // Then
-  $I->seeCurrentUrlEquals('/admin/users/main/questionnaires');
+  $I->seeCurrentUrlEquals('/admin/questionnaires');
   $I->seeRecord('questionnaires', ['title' => 'UpdatedQuestionnaire']);
   $I->see('Questionnaires', 'h1');
   $I->see('UpdatedQuestionnaire');

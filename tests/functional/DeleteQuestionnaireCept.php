@@ -16,7 +16,7 @@ $I->seeRecord('questionnaires', ['title' => 'RandomQuestionnaire', 'id' => '9999
 
 
 // When
-$I->amOnPage('/admin/users/main/questionnaires');
+$I->amOnPage('/admin/questionnaires');
 
 // then
 
@@ -27,6 +27,6 @@ $I->seeElement('a', ['name' => '9999']);
 $I->click('Delete RandomQuestionnaire');
 
 // Then
-$I->amOnPage('/admin/users/main/questionnaires');
+$I->amOnPage('/admin/questionnaires');
 // And
 $I->dontSeeElement('a', ['name' => '9999']);
