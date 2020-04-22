@@ -12,14 +12,14 @@ $I->dontSee('Test Answer');
 $I->click('Add Answer');
 
 // Then
-$I->amOnPage('/admin/answers/create');
+$I->amOnPage('/admin/answer/create');
 // And
 $I->see('Add Answer', 'h1');
 $I->submitForm('.createanswers', [
      'answer' => 'Test Answer',
 ]);
 // Then
-$I->seeCurrentUrlEquals('/admin/answers');
+$I->seeCurrentUrlEquals('/admin/answer');
 $I->see('Answers', 'h1');
 $I->see('New answer added!');
 $I->see('Test Answer');

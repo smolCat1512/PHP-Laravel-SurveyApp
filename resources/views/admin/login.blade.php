@@ -7,11 +7,11 @@
   <body>
     <h1>Login</h1>
 
-    <form action="login.php" method="get">
-      username: <input type="text" name="fname">
-      password: <input type="text" name="fname">
-    
-</form>
+    <form action="action.php" method="post">
+     <p>username: <input type="text" name="username" /></p>
+     <p>password: <input type="text" name="password" /></p>
+     <p><input type="submit" /></p>
+    </form>
 
 
   </body>
