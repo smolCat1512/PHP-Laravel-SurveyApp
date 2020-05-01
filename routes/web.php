@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('admin', function() {
@@ -24,6 +24,8 @@ Route::get('/admin/login', function(){
 });
 
 Route::resource('/admin/answer', 'AnswerController');
+
+
 
 /*
 |--------------------------------------------------------------------------

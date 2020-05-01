@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SurveyKitty Home</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -56,6 +56,7 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                color: hotpink;
             }
 
             .m-b-md {
@@ -64,6 +65,7 @@
         </style>
     </head>
     <body>
+    
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -81,19 +83,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    SurveyKitty Home
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
+                <button><a href="/admin/login" class="links">Researchers access</a></button>
+
+                <button><a href="/respondents">Respondents</a></button>
+                
                 </div>
+
             </div>
         </div>
     </body>

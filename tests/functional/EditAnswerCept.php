@@ -5,7 +5,7 @@
   $I->wantTo('update an answer');
 
   // create an answer in the db that we can then update
-  $I->haveRecord('answer', [
+  $I->haveRecord('answers', [
       'id' => '0001',
       'answer' => 'RandomAnswer',
   ]);

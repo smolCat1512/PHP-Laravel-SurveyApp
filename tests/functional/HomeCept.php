@@ -2,11 +2,11 @@
 $I = new FunctionalTester($scenario);
 
 $I->am('a admin');
-$I->wantTo('test Laravel Working');
+$I->wantTo('see Home Page');
 
 //When
 $I->amOnPage('/');
 
 //then
 $I->seeCurrentUrlEquals('/');
-$I->See('Laravel', '.title');
+$I->See('Home', '.title');

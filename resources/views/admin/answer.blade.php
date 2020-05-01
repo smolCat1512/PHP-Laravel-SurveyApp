@@ -25,15 +25,6 @@
   <button type="button" name="button" href="/admin/answer/create">Add Answer</button>
 </form>
 
-<h1>Add Answer</h1>
-
-
-
-{!! Form::open(['']) !!}
-    <div class="row">
-        {!! Form::submit('Add Article', ['class' => 'button']) !!}
-    </div>
-{!! Form::close() !!}
 
   </body>
 </html>
