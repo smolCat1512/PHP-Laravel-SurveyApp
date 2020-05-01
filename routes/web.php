@@ -12,19 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('admin', function() {
-  return view ('admin.admin');
+Route::get('/auth/login', function(){
+  return view ('auth.login');
 });
-
-Route::get('/admin/login', function(){
-  return view ('admin.login');
-});
-
-Route::resource('/admin/answer', 'AnswerController');
-
 
 
 /*
@@ -39,5 +32,10 @@ Route::resource('/admin/answer', 'AnswerController');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+  Auth::routes();
+
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::resource('/home/answer', 'AnswerController');
 });
+
+

@@ -7,6 +7,14 @@ use App\Answer;
 
 class AnswerController extends Controller
 {
+    /*
+    * Secure the set of pages to the admin.
+    */
+    public function __construct()
+    {
+       $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +22,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        // get all the answers
-        $answers = Answer::all();
-
-        return view('admin/answer', ['answers' => $answers]);
+        return view('answer');
 
     }
 
@@ -28,7 +33,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        return view('admin/answer/create');
+        return view('home/answer/create');
     }
 
     /**
