@@ -3,6 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -16,8 +17,19 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You are logged in!</p>
                 </div>
+
+                <p>Welcome to SurveyKitty</p>
+
+                <h1>Questionnaires</h1>
+                
+                <button>Questions</button>
+
+                <button>Answers</button>
+
+
+
             </div>
         </div>
     </div>

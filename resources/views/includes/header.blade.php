@@ -1,9 +1,9 @@
 <nav>
      <div class="container-fluid">
           <ul class="nav navbar-nav">
-             <li class="active"><a href="/">Home</a></li>
-             <li><a href="/auth/login">Researchers</a></li>
-             <li><a href="/respondents"></a>Respondents</li>
+             <li> <a href="/">Welcome Page</a></li>
+             <li><a href="/auth/login">Researchers Login/Logout</a></li>
+             <li><a href="/respondents"></a>Respondents Area</li>
          </ul>
      </div>
  </nav>

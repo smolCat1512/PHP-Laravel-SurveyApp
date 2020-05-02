@@ -49,6 +49,8 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                border: solid;
+                border-color: grey;
             }
             .m-b-md {
                 margin-bottom: 30px;
@@ -76,9 +78,11 @@
                     SurveyKitty Home
                 </div>
 
+                <img src="{{URL::asset('/images/welcome.jpg')}}" alt="welcome picture" height="300" width="600">
+
                 <div class="links">
-                    <a href="/home">Researchers Dashboard</a>
-                    <a href="/respondents">Respondents</a>
+                    <a href="/home">Researchers Area</a>
+                    <a href="/respondents">Respondents Area</a>
                 </div>
             </div>
         </div>

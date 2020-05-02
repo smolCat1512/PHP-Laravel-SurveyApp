@@ -5,7 +5,7 @@ $I->am('user');
 $I->wantTo('create a questionnaire');
 
 // When
-$I->amOnPage('/admin/questionnaires');
+$I->amOnPage('home');
 $I->see('Questionnaires', 'h1');
 $I->dontSee('Test Questionnaire');
 // And
