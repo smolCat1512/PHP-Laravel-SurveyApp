@@ -23,12 +23,8 @@
                 <p>Welcome to SurveyKitty</p>
 
                 <h1>Questionnaires</h1>
-                
-                <button>Questions</button>
 
-                <button>Answers</button>
-
-
+                <a href="">Add Questionnaire</a>                
 
             </div>
         </div>
