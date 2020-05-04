@@ -16,7 +16,7 @@ $I->dontSee('Test Questionnaire');
 $I->click('Create Questionnaire');
 
 // Then
-$I->amOnPage('/home/questionnaires/create');
+$I->amOnPage('/home/questionnaires');
 // And
 $I->see('Create Questionnaire', 'h1');
 $I->submitForm('.createquestionnaire', [

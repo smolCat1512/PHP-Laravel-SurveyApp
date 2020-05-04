@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/home', 'HomeController@index')->name('home');
   Route::resource('/home/answer', 'AnswerController');
+  Route::resource('/home/questionnaire', 'QuestionnaireController');
 });
 
 
