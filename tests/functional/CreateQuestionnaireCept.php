@@ -11,12 +11,11 @@ Auth::loginUsingId(3);
 // When
 $I->amOnPage('home');
 $I->see('Questionnaires', 'h1');
-$I->dontSee('Test Questionnaire');
 // And
 $I->click('Create Questionnaire');
 
 // Then
-$I->amOnPage('/home/questionnaires');
+$I->amOnPage('/admin/questionnaires');
 // And
 $I->see('Create Questionnaire', 'h1');
 $I->submitForm('.createquestionnaire', [
@@ -24,7 +23,7 @@ $I->submitForm('.createquestionnaire', [
      'ethics statement' => 'By continuing you agree...',
 ]);
 // Then
-$I->seeCurrentUrlEquals('/home/questionnaires');
+$I->seeCurrentUrlEquals('/admin/questionnaires');
 $I->see('Questionnaires', 'h1');
 $I->see('New questionnaire created!');
 $I->see('Test Questionnaire');

@@ -24,17 +24,13 @@
 
                 <h1>Questionnaires</h1>
 
-                <a href="">View Questionnaires</a>
-
-                <a href="">Create Questionnaire</a>
+                <a href="admin/questionnaires">Create Questionnaire</a>
 
                 <a href="">Edit Questionnaire</a>
 
                 <a href="">Delete Questionnaire</a>
 
                 <h1>Questions</h1>
-
-                <a href="">View Questions</a>
 
                 <a href="">Create Question</a>
 
@@ -43,8 +39,6 @@
                 <a href="">Delete Question</a>
 
                 <h1>Answers</h1>
-
-                <a href="">View Answer</a>
 
                 <a href="">Create Answer</a>
 

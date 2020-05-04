@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Questionnaire;
 
 class QuestionnaireController extends Controller
 {
@@ -13,7 +14,12 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        //
+        {
+            // get all the questionnaires
+            $questionnaires = Questionnaire::all();
+    
+            return view('admin/questionnaires', ['questionnaires' => $questionnaires]);
+        }
     }
 
     /**
