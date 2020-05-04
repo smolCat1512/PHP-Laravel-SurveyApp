@@ -6,7 +6,7 @@ $I->wantTo('create a questionnaire');
 
 // log in as your admin user
 // This should be id of 1 if you created your manual login for a known user first.
-Auth::loginUsingId(3);
+Auth::loginUsingId(1);
 
 // When
 $I->amOnPage('home');
@@ -18,9 +18,9 @@ $I->click('Create Questionnaire');
 $I->amOnPage('/admin/questionnaires');
 // And
 $I->see('Create Questionnaire', 'h1');
-$I->submitForm('.createquestionnaire', [
+$I->submitForm('#createquestionnaire', [
      'title' => 'Test Questionnaire',
-     'ethics statement' => 'By continuing you agree...',
+     'ethics statement' => 'By continuing you agree',
 ]);
 // Then
 $I->seeCurrentUrlEquals('/admin/questionnaires');

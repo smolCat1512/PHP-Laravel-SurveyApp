@@ -29,7 +29,7 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/questionnaires/create');
     }
 
     /**
@@ -40,7 +40,10 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $questionnaire = Questionnaire::create($request->all());
+        $questionnaire->questions()->attach($request->input('question'));
+
+        return redirect('admin/questionnaires');
     }
 
     /**

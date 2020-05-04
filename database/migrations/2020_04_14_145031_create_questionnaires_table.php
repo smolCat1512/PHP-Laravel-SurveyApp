@@ -16,7 +16,7 @@ class CreateQuestionnairesTable extends Migration
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('ethics statement');
+            $table->string('ethics');
             $table->timestamps();
         });
     }
