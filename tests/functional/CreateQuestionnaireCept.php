@@ -10,14 +10,19 @@ Auth::loginUsingId(1);
 
 // When
 $I->amOnPage('home');
-$I->see('Questionnaires', 'h1');
+$I->see('Questionnaires');
 // And
+$I->click('Questionnaires');
+
+// Then
+$I->amOnPage('/admin/questionnaire');
+// And
+$I->see('Questionnaires', 'h1');
 $I->click('Create Questionnaire');
 
 // Then
-$I->amOnPage('/admin/questionnaires');
+$I->amOnPage('/admin/questionnaires/create');
 // And
-$I->see('Create Questionnaire', 'h1');
 $I->submitForm('#createquestionnaire', [
      'title' => 'Test Questionnaire',
      'ethics' => 'By continuing you agree',

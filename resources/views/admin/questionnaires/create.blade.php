@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Questionnaire</title>
-</head>
-<body>
+@extends('layouts.master')
+
+@section('title', 'Create Questionnaire')
+
+@section('content')
+
+    <h1>Create Questionnaire</h1>
+
+    {{ Form::open(array('action' => 'QuestionnaireController@store', 'id' => 'createquestionnaire')) }}
+
+<div class="row large-12 columns">
+        {!! Form::label('title', 'Title:') !!}
+        {!! Form::text('title', null, ['class' => 'large-8 columns']) !!}
+    </div>
     
-</body>
-</html>
+    <div class="row large-12 columns">
+        {!! Form::label('ethics', 'Ethics:') !!}
+        {!! Form::text('ethics', null, ['class' => 'large-8 columns']) !!}
+    </div>
+        
+    <div class="row large-6 columns">
+        {!! Form::submit('Create Questionnaire', ['class' => 'button']) !!}
+    </div>
+{!! Form::close() !!}
+
+@endsection

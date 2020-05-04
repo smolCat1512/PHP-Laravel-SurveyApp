@@ -22,33 +22,15 @@
 
                 <p>Welcome to SurveyKitty</p>
 
-                <h1>Questionnaires</h1>
+                <a class="btn btn-outline-primary" href="admin/questionnaire">Questionnaires</a>
 
-                <a href="admin/questionnaires">Create Questionnaire</a>
+                <a class="btn btn-outline-primary" href="admin/questions">Questions</a>
 
-                <a href="">Edit Questionnaire</a>
-
-                <a href="">Delete Questionnaire</a>
-
-                <h1>Questions</h1>
-
-                <a href="">Create Question</a>
-
-                <a href="">Edit Question</a>
-
-                <a href="">Delete Question</a>
-
-                <h1>Answers</h1>
-
-                <a href="">Create Answer</a>
-
-                <a href="">Edit Answer</a>
-
-                <a href="">Delete Answer</a>
+                <a class="btn btn-primary" href="admin/answers">Answers</a>
 
                 <h1>Responses</h1>
 
-                <a href="">View responses</a>
+                <a class="btn btn-primary" href="">View responses</a>
 
             </div>
         </div>

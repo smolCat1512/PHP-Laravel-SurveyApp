@@ -8,7 +8,7 @@ class Questionnaire extends Model
 {
     protected $fillable = [
         'title',
-        'ethics statement'
+        'ethics statement',
     ];
 
     /**

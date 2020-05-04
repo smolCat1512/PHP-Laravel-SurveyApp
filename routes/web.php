@@ -36,11 +36,13 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/admin', 'QuestionnaireController@index')->name('admin');
-  Route::get('/admin/questionnaires', function() {
-    return view('admin.questionnaires');
+  Route::get('/admin/questionnaire', function() {
+    return view('admin.questionnaire');
   });
   Route::resource('/admin/answer', 'AnswerController');
   Route::resource('/admin/questionnaire', 'QuestionnaireController');
+  Route::resource('/questionnaires/create', 'QuestionnaireController');
+
 });
 
 

@@ -18,7 +18,7 @@ class QuestionnaireController extends Controller
             // get all the questionnaires
             $questionnaires = Questionnaire::all();
     
-            return view('admin/questionnaires', ['questionnaires' => $questionnaires]);
+            return view('admin/questionnaire', ['questionnaires' => $questionnaires]);
         }
     }
 
@@ -42,14 +42,13 @@ class QuestionnaireController extends Controller
     {
         $data = request()->validate([
             'title' => 'required',
-
             'ethics' => 'required',
         ]);
 
         $questionnaire = Questionnaire::create($request->all());
         $questionnaire->questions()->attach($request->input('question'));
 
-        return redirect('admin/questionnaires');
+        return redirect('admin/questionnaire');
     }
 
     /**
