@@ -20,7 +20,7 @@ $I->amOnPage('/admin/questionnaires');
 $I->see('Create Questionnaire', 'h1');
 $I->submitForm('#createquestionnaire', [
      'title' => 'Test Questionnaire',
-     'ethics statement' => 'By continuing you agree',
+     'ethics' => 'By continuing you agree',
 ]);
 // Then
 $I->seeCurrentUrlEquals('/admin/questionnaires');

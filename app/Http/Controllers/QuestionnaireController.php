@@ -40,6 +40,12 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+            'title' => 'required',
+
+            'ethics' => 'required',
+        ]);
+
         $questionnaire = Questionnaire::create($request->all());
         $questionnaire->questions()->attach($request->input('question'));
 

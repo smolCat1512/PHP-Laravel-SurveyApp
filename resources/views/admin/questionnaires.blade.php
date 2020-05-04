@@ -27,7 +27,7 @@
     </div>
     
     <div class="row large-12 columns">
-        {!! Form::label('ethics', 'Ethics Statement:') !!}
+        {!! Form::label('ethics', 'Ethics:') !!}
         {!! Form::text('ethics', null, ['class' => 'large-8 columns']) !!}
     </div>
         
