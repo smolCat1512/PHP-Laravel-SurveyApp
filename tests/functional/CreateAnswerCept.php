@@ -6,7 +6,7 @@ $I->wantTo('create an answer');
 
 // log in as your admin user
 // This should be id of 1 if you created your manual login for a known user first.
-Auth::loginUsingId(1);
+Auth::loginUsingId(3);
 
 // When
 $I->amOnPage('home');
