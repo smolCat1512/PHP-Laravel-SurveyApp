@@ -16,7 +16,7 @@ $I->dontSee('Test Questionnaire');
 $I->click('Add Questionnaire');
 
 // Then
-$I->amOnPage('/admin/questionnaires/create');
+$I->amOnPage('/home/questionnaires/create');
 // And
 $I->see('Add Questionnaire', 'h1');
 $I->submitForm('.createquestionnaire', [
@@ -24,7 +24,7 @@ $I->submitForm('.createquestionnaire', [
      'ethics statement' => 'By continuing you agree...',
 ]);
 // Then
-$I->seeCurrentUrlEquals('/admin/questionnaires');
+$I->seeCurrentUrlEquals('/home/questionnaires');
 $I->see('Questionnaires', 'h1');
 $I->see('New questionnaire added!');
 $I->see('Test Questionnaire');

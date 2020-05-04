@@ -24,7 +24,12 @@
 
                 <h1>Questionnaires</h1>
 
-                <a href="">Add Questionnaire</a>                
+                <a href="">Add Questionnaire</a>
+
+
+                <h1>Answers</h1>
+
+                <a href="">Add Answer</a>
 
             </div>
         </div>
