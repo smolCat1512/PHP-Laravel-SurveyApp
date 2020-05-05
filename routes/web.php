@@ -43,7 +43,7 @@ Route::group(['middleware' => ['web']], function () {
     return view('admin.question');
   });
   Route::get('/admin/answer', function() {
-    return view('admin.answer');
+    return view('admin.answer'); 
   });
   Route::get('/admin/questionnaires/create', function() {
     return view('admin.questionnaires.create');
