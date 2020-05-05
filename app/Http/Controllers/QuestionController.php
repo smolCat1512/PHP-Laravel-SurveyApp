@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
 
 class QuestionController extends Controller
 {
+
+    /*
+    * Secure the set of pages to the admin.
+    */
+    public function __construct()
+    {
+       $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,12 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        {
+            // get all the questionnaires
+            $questions = Question::all();
+    
+            return view('admin/question', ['questions' => $questions]);
+        }
     }
 
     /**
@@ -23,7 +38,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/questions/create');
     }
 
     /**
@@ -34,7 +49,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'question' => 'required',
+        ]);
+
+        $question = Question::create($request->all());
+        $question->answers()->attach($request->input('answer'));
+
+        return redirect('admin/question');
     }
 
     /**

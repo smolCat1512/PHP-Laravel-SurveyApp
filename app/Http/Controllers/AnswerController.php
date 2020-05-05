@@ -7,6 +7,7 @@ use App\Answer;
 
 class AnswerController extends Controller
 {
+    
     /*
     * Secure the set of pages to the admin.
     */
@@ -22,8 +23,12 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        return view('answer');
-
+        {
+            // get all the questionnaires
+            $answers = Answer::all();
+    
+            return view('admin/answer', ['answers' => $answers]);
+        }
     }
 
     /**
@@ -33,7 +38,7 @@ class AnswerController extends Controller
      */
     public function create()
     {
-        return view('home/answer/create');
+        return view('admin/answers/create');
     }
 
     /**
@@ -44,7 +49,13 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'answer' => 'required',
+        ]);
+
+        $answer = Answer::create($request->all());
+
+        return redirect('admin/answer');
     }
 
     /**

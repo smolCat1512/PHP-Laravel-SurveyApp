@@ -6,20 +6,26 @@
 
 <h1>Questionnaires</h1>
 
-<section>
-    @if (isset ($questionnaires))
 
+    <h2>Current Questionnaires</h2>
+
+    @if (isset ($questionnaires))
         <ul>
             @foreach ($questionnaires as $questionnaire)
-            <li><a href="/admin/questionnaire/{{ $questionnaire->id }}" name="{{ $questionnaire->title }}"></a></li>
+            <li>{{ $questionnaire->title }}</li>
             @endforeach
         </ul>
     @else
         <p> no questionnaires added yet </p>
     @endif
-</section>
 
-<a href="questionnaires/create">Create Questionnaire</a>
+
+
+{{ Form::open(array('action' => 'QuestionnaireController@create', 'method' => 'get')) }}
+    <div class="row">
+        {!! Form::submit('Create Questionnaire', ['class' => 'button']) !!}
+    </div>
+{{ Form::close() }}
 
 @endsection
 

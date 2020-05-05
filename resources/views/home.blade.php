@@ -20,13 +20,16 @@
                     <p>You are logged in!</p>
                 </div>
 
-                <p>Welcome to SurveyKitty</p>
+                <h1>Welcome to SurveyKitty</h1>
+
+                <p>Please selected a section from the below</p>
+                
 
                 <a class="btn btn-outline-primary" href="admin/questionnaire">Questionnaires</a>
 
-                <a class="btn btn-outline-primary" href="admin/questions">Questions</a>
+                <a class="btn btn-outline-primary" href="admin/question">Questions</a>
 
-                <a class="btn btn-primary" href="admin/answers">Answers</a>
+                <a class="btn btn-outline-primary" href="admin/answer">Answers</a>
 
                 <h1>Responses</h1>
 

@@ -10,20 +10,23 @@ Auth::loginUsingId(1);
 
 // When
 $I->amOnPage('home');
-$I->see('Answers', 'h1');
-$I->dontSee('Test Answer');
+$I->see('Answers');
 // And
-$I->click('Add Answer');
+$I->click('Answers');
 
 // Then
-$I->amOnPage('/home/answer/create');
+$I->amOnPage('/admin/answer');
 // And
-$I->see('Add Answer', 'h1');
-$I->submitForm('.createanswers', [
+$I->see('Answers', 'h1');
+$I->click('Create Answer');
+
+// Then
+$I->amOnPage('/admin/answers/create');
+// And
+$I->submitForm('#createanswer', [
      'answer' => 'Test Answer',
 ]);
 // Then
-$I->seeCurrentUrlEquals('/home/answer');
+$I->seeCurrentUrlEquals('/admin/answer');
 $I->see('Answers', 'h1');
-$I->see('New answer added!');
 $I->see('Test Answer');

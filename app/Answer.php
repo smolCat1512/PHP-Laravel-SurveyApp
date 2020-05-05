@@ -6,5 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    //
+    protected $fillable = [
+        'answer',
+    ];
+
+    public function questionnaires()
+    {
+        return $this->belongsToMany('App\Questionnaire');
+    }
+
+    public function questions()
+    {
+        return $this->belongsToMany('App\Question');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

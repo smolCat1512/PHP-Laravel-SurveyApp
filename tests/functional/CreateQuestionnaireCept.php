@@ -28,7 +28,6 @@ $I->submitForm('#createquestionnaire', [
      'ethics' => 'By continuing you agree',
 ]);
 // Then
-$I->seeCurrentUrlEquals('/admin/questionnaires');
+$I->seeCurrentUrlEquals('/admin/questionnaire');
 $I->see('Questionnaires', 'h1');
-$I->see('New questionnaire created!');
 $I->see('Test Questionnaire');

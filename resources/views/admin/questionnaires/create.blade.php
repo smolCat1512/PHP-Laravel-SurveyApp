@@ -4,9 +4,7 @@
 
 @section('content')
 
-    <h1>Create Questionnaire</h1>
-
-    {{ Form::open(array('action' => 'QuestionnaireController@store', 'id' => 'createquestionnaire')) }}
+    {{ Form::open(array('action' => 'QuestionnaireController@store', 'id' => 'createquestionnaire'))  }}
 
 <div class="row large-12 columns">
         {!! Form::label('title', 'Title:') !!}
