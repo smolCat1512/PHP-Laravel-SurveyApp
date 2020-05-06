@@ -12,9 +12,9 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     <p>You are logged in!</p>
@@ -23,7 +23,7 @@
                 <h1>Welcome to SurveyKitty</h1>
 
                 <p>Please selected a section from the below</p>
-                
+
 
                 <a class="btn btn-outline-primary" href="admin/questionnaire">Questionnaires</a>
 
