@@ -14,8 +14,10 @@ class CreateQuestionQuestionnaireTable extends Migration
     public function up()
     {
         Schema::create('question_questionnaire', function (Blueprint $table) {
-            $table->integer('question_id')->unsigned();
-            $table->integer('questionnaire_id')->unsigned();
+            $table->unsignedBigInteger('question_id')->unsigned();
+            $table->unsignedBigInteger('questionnaire_id')->unsigned();
+            $table->foreign('question_id')->references('questionId')->on('questions')->onDelete('cascade');
+            $table->foreign('questionnaire_id')->references('questionnaireId')->on('questionnaires')->onDelete('cascade');
         });
     }
 

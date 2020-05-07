@@ -14,8 +14,10 @@ class CreateQuestionnaireUserTable extends Migration
     public function up()
     {
         Schema::create('questionnaire_user', function (Blueprint $table) {
-            $table->integer('questionnaire_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('questionnaire_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('questionnaire_id')->references('questionnaireId')->on('questionnaires')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
