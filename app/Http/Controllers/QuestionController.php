@@ -26,8 +26,7 @@ class QuestionController extends Controller
         {
             // get all the questionnaires
             $questions = Question::all();
-    
-            return view('admin/question', ['questions' => $questions]);
+            return view('admin/question')->with('questions', $questions);
         }
     }
 

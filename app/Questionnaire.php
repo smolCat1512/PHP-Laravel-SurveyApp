@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questionnaire extends Model
 {
+    protected $table = 'questionnaires';
+
     protected $fillable = [
         'title',
         'ethics',
     ];
+
+    protected $primaryKey = 'questionnaireId';
     
     /**
      * Get the questions associated with the given questionnaire.
@@ -29,6 +33,6 @@ class Questionnaire extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'questionnaire_user', 'user_id', 'questionnaire_id');
     }
 }

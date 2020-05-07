@@ -60,7 +60,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::resource('/questionnaires/create', 'QuestionnaireController');
   Route::resource('/questions/create', 'QuestionController');
   Route::resource('/answers/create', 'AnswerController');
-
+  Route::resource('Questionnaire', 'QuestionnaireController');
 });
 
 

@@ -8,7 +8,20 @@
 
     <h2>Current Questionnaires</h2>
 
-    <section>
+    @if(count($questionnaires) > 1)
+        @foreach($questionnaires as $questionnaire)
+        <div class="well">
+            <h3><a href="questionnaire/{{$questionnaire->questionnaireId}}">{{$questionnaire->title}}</a></h3>
+            <p>Ethics statement:{{$questionnaire->ethics}}</p>
+            <small>Created:{{$questionnaire->created_at}}</small>     
+        </div>
+        <hr>
+        @endforeach
+        @else
+        <p>No questionnaires created yet</p>
+        @endif
+    
+    <!-- <section>
           @if (isset ($questionnaires))
 
               <table class="table table-striped table-bordered">
@@ -33,7 +46,7 @@
           @else
               <p> No questionnaires added yet </p>
           @endif
-      </section>
+      </section> -->
 
 <!-- 
     @if (isset ($questionnaires))

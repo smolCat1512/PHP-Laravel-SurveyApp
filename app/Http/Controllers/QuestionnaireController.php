@@ -26,9 +26,8 @@ class QuestionnaireController extends Controller
     {
         {
             // get all the questionnaires
-            $questionnaires = Questionnaire::all();
-    
-            return view('admin/questionnaire', ['questionnaires' => $questionnaires]);
+            $questionnaires = Questionnaire::orderBy('created_at','desc')->get();            
+            return view('admin/questionnaire')->with('questionnaires', $questionnaires);
         }
     }
 
@@ -69,7 +68,8 @@ class QuestionnaireController extends Controller
      */
     public function show($id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire);
     }
 
     /**

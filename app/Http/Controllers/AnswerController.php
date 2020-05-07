@@ -27,7 +27,7 @@ class AnswerController extends Controller
             // get all the questionnaires
             $answers = Answer::all();
     
-            return view('admin/answer', ['answers' => $answers]);
+            return view('admin/answer')->with('answers', $answers);
         }
     }
 

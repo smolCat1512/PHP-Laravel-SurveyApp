@@ -22,18 +22,17 @@
 
                 <h1>Welcome to SurveyKitty</h1>
 
-                <p>Please selected a section from the below</p>
+                <p>Please select an option from the below:</p>
 
+                <a class="btn btn-outline-primary row" href="admin/questionnaire">Questionnaires</a>
 
-                <a class="btn btn-outline-primary" href="admin/questionnaire">Questionnaires</a>
+                <a class="btn btn-outline-primary row" href="admin/question">Questions</a>
 
-                <a class="btn btn-outline-primary" href="admin/question">Questions</a>
-
-                <a class="btn btn-outline-primary" href="admin/answer">Answers</a>
+                <a class="btn btn-outline-primary row" href="admin/answer">Answers</a>
 
                 <h1>Responses</h1>
 
-                <a class="btn btn-primary" href="">View responses</a>
+                <a class="btn btn-primary row" href="">View responses</a>
 
             </div>
         </div>
