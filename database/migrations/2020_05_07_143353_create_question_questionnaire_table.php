@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RespondentQuestion extends Migration
+class CreateQuestionQuestionnaireTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class RespondentQuestion extends Migration
      */
     public function up()
     {
-        Schema::create('respondent_question', function (Blueprint $table) {
-            $table->integer('respondent_id');
-            $table->integer('question_id');
+        Schema::create('question_questionnaire', function (Blueprint $table) {
+            $table->integer('question_id')->unsigned();
+            $table->integer('questionnaire_id')->unsigned();
         });
     }
 
@@ -26,6 +26,6 @@ class RespondentQuestion extends Migration
      */
     public function down()
     {
-        Schema::drop('respondent_question');
+        Schema::dropIfExists('question_questionnaire');
     }
 }

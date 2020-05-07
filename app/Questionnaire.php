@@ -10,7 +10,7 @@ class Questionnaire extends Model
         'title',
         'ethics',
     ];
-
+    
     /**
      * Get the questions associated with the given questionnaire.
      *
