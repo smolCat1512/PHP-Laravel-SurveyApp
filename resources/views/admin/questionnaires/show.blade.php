@@ -7,6 +7,7 @@
 <hr> 
 <small>Created on:{{$questionnaire->created_at}}</small>
 <small>Updated on:{{$questionnaire->updated_at}}</small>
-
+<hr>
+<a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="btn btn-default">Edit</a>
 @endsection
 

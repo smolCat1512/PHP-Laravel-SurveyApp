@@ -17,11 +17,11 @@ $I->click('Questionnaires');
 // Then
 $I->amOnPage('/admin/questionnaire');
 // And
-$I->see('Questionnaires', 'h1');
+$I->see('Current Questionnaires');
 $I->click('Create Questionnaire');
 
 // Then
-$I->amOnPage('/admin/questionnaires/create');
+$I->amOnPage('/questionnaire/create');
 // And
 $I->submitForm('#createquestionnaire', [
      'title' => 'Test Questionnaire',
@@ -29,5 +29,5 @@ $I->submitForm('#createquestionnaire', [
 ]);
 // Then
 $I->seeCurrentUrlEquals('/admin/questionnaire');
-$I->see('Questionnaires', 'h1');
+$I->see('Current Questionnaires');
 $I->see('Test Questionnaire');

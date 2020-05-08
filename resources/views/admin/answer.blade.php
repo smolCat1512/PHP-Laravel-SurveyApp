@@ -4,19 +4,19 @@
 
 @section('content')
 
-<h1>Answers</h1>
+<h2>Current Answers</h2>
 
-
-    <h2>Current Answers</h2>
-
-    @if (isset ($answers))
-        <ul>
-            @foreach ($answers as $answer)
-            <li>{{ $answer->answer }}</li>
-            @endforeach
-        </ul>
+@if(count($answers) > 0)
+    @foreach($answers as $answer)
+    <div class="well">
+        <h3><a href="answer/{{$answer->answerId}}">{{$answer->answer}}</a></h3>
+        <small>Created:{{$answer->created_at}}</small>     
+    </div>
+    <hr>
+    @endforeach
+    {{$answers->links()}}
     @else
-        <p> no answers added yet </p>
+    <p>No answers created yet</p>
     @endif
 
 

@@ -10,6 +10,9 @@ class Answer extends Model
         'answer',
     ];
 
+    protected $primaryKey = 'answerId';
+
+
     public function questionnaires()
     {
         return $this->belongsToMany('App\Questionnaire');

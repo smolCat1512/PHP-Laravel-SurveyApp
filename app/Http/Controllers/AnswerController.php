@@ -24,9 +24,8 @@ class AnswerController extends Controller
     public function index()
     {
         {
-            // get all the questionnaires
-            $answers = Answer::all();
-    
+            // get all the answers
+            $answers = Answer::orderBy('created_at','desc')->paginate(2);            
             return view('admin/answer')->with('answers', $answers);
         }
     }
@@ -54,6 +53,7 @@ class AnswerController extends Controller
         ]);
 
         $answer = Answer::create($request->all());
+        // $answer->responses()->attach($request->input('response'));
 
         return redirect('admin/answer');
     }
@@ -66,7 +66,8 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        //
+        $answer = Answer::find($id);
+        return view ('admin.answers.show')->with('answer', $answer);
     }
 
     /**

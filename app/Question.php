@@ -11,6 +11,9 @@ class Question extends Model
         'question',
     ];
 
+    protected $primaryKey = 'questionId';
+
+
     public function questionnaires()
     {
         return $this->belongsToMany('App\Questionnaire');

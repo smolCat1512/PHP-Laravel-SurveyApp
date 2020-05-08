@@ -1,22 +1,22 @@
 @extends('layouts.master')
 
-@section('title', 'Questionnaires')
+@section('title', 'Question')
 
 @section('content')
 
-<h1>Questions</h1>
+<h2>Current Questions</h2>
 
-
-    <h2>Current Questions</h2>
-
-    @if (isset ($questions))
-        <ul>
-            @foreach ($questions as $question)
-            <li>{{ $question->question }}</li>
-            @endforeach
-        </ul>
+@if(count($questions) > 0)
+    @foreach($questions as $question)
+    <div class="well">
+        <h3><a href="question/{{$question->questionId}}">{{$question->question}}</a></h3>
+        <small>Created:{{$question->created_at}}</small>     
+    </div>
+    <hr>
+    @endforeach
+    {{$questions->links()}}
     @else
-        <p> no questions added yet </p>
+    <p>No questions created yet</p>
     @endif
 
 

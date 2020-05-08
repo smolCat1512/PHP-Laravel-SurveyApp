@@ -24,8 +24,8 @@ class QuestionController extends Controller
     public function index()
     {
         {
-            // get all the questionnaires
-            $questions = Question::all();
+            // get all the questions
+            $questions = Question::orderBy('created_at','desc')->paginate(2);            
             return view('admin/question')->with('questions', $questions);
         }
     }
@@ -66,7 +66,8 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        $question = Question::find($id);
+        return view ('admin.questions.show')->with('question', $question);
     }
 
     /**

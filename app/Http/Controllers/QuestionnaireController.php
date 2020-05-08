@@ -26,7 +26,7 @@ class QuestionnaireController extends Controller
     {
         {
             // get all the questionnaires
-            $questionnaires = Questionnaire::orderBy('created_at','desc')->get();            
+            $questionnaires = Questionnaire::orderBy('created_at','desc')->paginate(2);            
             return view('admin/questionnaire')->with('questionnaires', $questionnaires);
         }
     }
@@ -80,7 +80,8 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $questionnaire = Questionnaire::find($id);
+        return view ('admin.questionnaires.edit')->with('questionnaire', $questionnaire);
     }
 
     /**
@@ -92,7 +93,15 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'title' => 'required',
+            'ethics' => 'required',
+        ]);
+
+        $questionnaire = Questionnaire::find($request->all());
+        $questionnaire->questions()->attach($request->input('question'));
+
+        return redirect('admin/questionnaire');
     }
 
     /**

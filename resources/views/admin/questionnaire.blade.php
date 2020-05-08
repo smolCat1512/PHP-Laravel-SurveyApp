@@ -4,11 +4,9 @@
 
 @section('content')
 
-<h1>Questionnaires</h1>
-
     <h2>Current Questionnaires</h2>
 
-    @if(count($questionnaires) > 1)
+    @if(count($questionnaires) > 0)
         @foreach($questionnaires as $questionnaire)
         <div class="well">
             <h3><a href="questionnaire/{{$questionnaire->questionnaireId}}">{{$questionnaire->title}}</a></h3>
@@ -17,6 +15,7 @@
         </div>
         <hr>
         @endforeach
+        {{$questionnaires->links()}}
         @else
         <p>No questionnaires created yet</p>
         @endif
