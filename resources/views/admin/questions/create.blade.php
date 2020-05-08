@@ -4,16 +4,15 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => 'QuestionController@store', 'id' => 'createquestion'))  }}
+    {{ Form::open(array('action' => 'QuestionController@store', 'id' => 'createquestion', 'method' => 'POST'))  }}
 
-<div class="row large-12 columns">
+<div class="form-group">
         {!! Form::label('question', 'Question:') !!}
-        {!! Form::text('question', null, ['class' => 'large-8 columns']) !!}
+        {!! Form::text('question', null, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}
     </div>
     
-    <div class="row large-6 columns">
         {!! Form::submit('Create Question', ['class' => 'button']) !!}
-    </div>
+
 {!! Form::close() !!}
 
 @endsection

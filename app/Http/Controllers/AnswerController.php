@@ -52,10 +52,11 @@ class AnswerController extends Controller
             'answer' => 'required',
         ]);
 
-        $answer = Answer::create($request->all());
-        // $answer->responses()->attach($request->input('response'));
+        $answer = new Answer;
+        $answer->answer = $request->input('answer');
+        $answer->save();
 
-        return redirect('admin/answer');
+        return redirect('admin/answer')->with('success', 'Answer created!!');
     }
 
     /**
@@ -78,7 +79,8 @@ class AnswerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $answer = Answer::find($id);
+        return view ('admin.answers.edit')->with('answer', $answer);
     }
 
     /**
@@ -90,7 +92,15 @@ class AnswerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'answer' => 'required',
+        ]);
+
+        $answer = Answer::find($id);
+        $answer->answer = $request->input('answer');
+        $answer->save();
+
+        return redirect('admin/answer')->with('success', 'Answer edited!!');
     }
 
     /**

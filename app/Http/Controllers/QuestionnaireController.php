@@ -54,10 +54,12 @@ class QuestionnaireController extends Controller
             'ethics' => 'required',
         ]);
 
-        $questionnaire = Questionnaire::create($request->all());
-        $questionnaire->questions()->attach($request->input('question'));
+        $questionnaire = new Questionnaire;
+        $questionnaire->title = $request->input('title');
+        $questionnaire->ethics = $request->input('ethics');
+        $questionnaire->save();
 
-        return redirect('admin/questionnaire');
+        return redirect('admin/questionnaire')->with('success', 'Questionnaire created!!');
     }
 
     /**
@@ -98,10 +100,12 @@ class QuestionnaireController extends Controller
             'ethics' => 'required',
         ]);
 
-        $questionnaire = Questionnaire::find($request->all());
-        $questionnaire->questions()->attach($request->input('question'));
+        $questionnaire = Questionnaire::find($id);
+        $questionnaire->title = $request->input('title');
+        $questionnaire->ethics = $request->input('ethics');
+        $questionnaire->save();
 
-        return redirect('admin/questionnaire');
+        return redirect('admin/questionnaire')->with('success', 'Questionnaire edited!!');
     }
 
     /**
@@ -112,6 +116,6 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

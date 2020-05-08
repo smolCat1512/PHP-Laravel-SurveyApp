@@ -52,10 +52,11 @@ class QuestionController extends Controller
             'question' => 'required',
         ]);
 
-        $question = Question::create($request->all());
-        $question->answers()->attach($request->input('answer'));
+        $question = new Question;
+        $question->question = $request->input('question');
+        $question->save();
 
-        return redirect('admin/question');
+        return redirect('admin/question')->with('success', 'Question created!!');
     }
 
     /**
@@ -78,7 +79,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+        return view ('admin.questions.edit')->with('question', $question);
     }
 
     /**
@@ -90,7 +92,15 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = request()->validate([
+            'question' => 'required',
+        ]);
+
+        $question = Question::find($id);
+        $question->question = $request->input('question');
+        $question->save();
+
+        return redirect('admin/question')->with('success', 'Question edited!!');
     }
 
     /**

@@ -4,16 +4,15 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => 'AnswerController@store', 'id' => 'createanswer'))  }}
+    {{ Form::open(array('action' => 'AnswerController@store', 'id' => 'createanswer', 'method' => 'POST'))  }}
 
-<div class="row large-12 columns">
+<div class="form-group">
         {!! Form::label('answer', 'Answer:') !!}
-        {!! Form::text('answer', null, ['class' => 'large-8 columns']) !!}
+        {!! Form::text('answer', null, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}
     </div>
     
-    <div class="row large-6 columns">
         {!! Form::submit('Create Answer', ['class' => 'button']) !!}
-    </div>
+    
 {!! Form::close() !!}
 
 @endsection

@@ -17,7 +17,7 @@
         </header>
 
         <article class="container row">
-
+            @include('includes.messages')
             @yield('content')
 
         </article>

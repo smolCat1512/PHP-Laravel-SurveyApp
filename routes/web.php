@@ -19,6 +19,8 @@ Route::get('/auth/login', function(){
   return view ('auth.login');
 });
 
+Route::resource('response', 'ResponseController');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +39,9 @@ Route::group(['middleware' => ['web']], function () {
   Route::resource('/admin/answer', 'AnswerController');
   Route::resource('/admin/questionnaire', 'QuestionnaireController');
   Route::resource('/admin/question', 'QuestionController');
-  Route::resource('/questionnaires/edit', 'QuestionnaireController');
-  Route::resource('/questionnaires/update', 'QuestionnaireController');
+  Route::resource('/admin/answers', 'AnswerController');
+  Route::resource('/admin/questionnaires', 'QuestionnaireController');
+  Route::resource('/admin/questions', 'QuestionController');
   Route::resource('questionnaire', 'QuestionnaireController');
   Route::resource('question', 'QuestionController');
   Route::resource('answer', 'AnswerController');

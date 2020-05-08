@@ -4,21 +4,20 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => 'QuestionnaireController@store', 'id' => 'createquestionnaire'))  }}
+    {{ Form::open(array('action' => 'QuestionnaireController@store', 'id' => 'createquestionnaire', 'method' => 'POST'))  }}
 
-<div class="row large-12 columns">
+<div class="form-group">
         {!! Form::label('title', 'Title:') !!}
-        {!! Form::text('title', null, ['class' => 'large-8 columns']) !!}
+        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}
     </div>
     
-    <div class="row large-12 columns">
+    <div class="form-group">
         {!! Form::label('ethics', 'Ethics:') !!}
-        {!! Form::text('ethics', null, ['class' => 'large-8 columns']) !!}
+        {!! Form::text('ethics', null, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}
     </div>
         
-    <div class="row large-6 columns">
         {!! Form::submit('Create Questionnaire', ['class' => 'button']) !!}
-    </div>
+        
 {!! Form::close() !!}
 
 @endsection
