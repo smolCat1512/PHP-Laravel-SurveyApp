@@ -14,20 +14,24 @@ class Answer extends Model
 
     protected $primaryKey = 'answerId';
 
-
-    public function questionnaires()
-    {
-        return $this->belongsToMany('App\Questionnaire');
-    }
-
-    public function questions()
-    {
-        return $this->belongsToMany('App\Question');
-    }
-
+    /**
+     * Get the user associated with the given questionnaire
+     *
+     * @return mixed
+     */
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Get the user associated with the given questionnaire
+     *
+     * @return mixed
+     */
+    public function question()
+    {
+        return $this->belongsTo('App\Question', 'foreign_key');
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Questionnaire;
+use App\User;
 
 class QuestionnaireController extends Controller
 {
@@ -13,7 +14,7 @@ class QuestionnaireController extends Controller
     */
     public function __construct()
     {
-       $this->middleware('auth');
+       $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
 
@@ -55,6 +56,7 @@ class QuestionnaireController extends Controller
         ]);
 
         $questionnaire = new Questionnaire;
+        $questionnaire->user_id = auth()->user()->id;
         $questionnaire->title = $request->input('title');
         $questionnaire->ethics = $request->input('ethics');
         $questionnaire->save();

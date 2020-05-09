@@ -5,7 +5,7 @@
 @section('content')
 
     {{ Form::open(array('action' => ['QuestionnaireController@update', $questionnaire->questionnaireId], 'id' => 'editquestionnaire', 'method' => 'POST'))  }}
-
+    @csrf
 <div class="form-group">
         {!! Form::label('title', 'Title:') !!}
         {!! Form::text('title', $questionnaire->title, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}

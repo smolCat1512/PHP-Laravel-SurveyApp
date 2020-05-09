@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use App\Question;
 
 class AnswerController extends Controller
 {
@@ -53,6 +54,7 @@ class AnswerController extends Controller
         ]);
 
         $answer = new Answer;
+        $answer->user_id = auth()->user()->id;
         $answer->answer = $request->input('answer');
         $answer->save();
 

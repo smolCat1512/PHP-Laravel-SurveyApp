@@ -39,8 +39,7 @@ class User extends Authenticatable
 
     public function questionnaires() {
 
-        return $this->belongsToMany('App\Questionnaire', 'questionnaire_user', 'user_id', 'questionnaire_id')
-        ->withTimestamps();
-        
+        return $this->hasMany('App\Questionnaire');        
     }
+
 }

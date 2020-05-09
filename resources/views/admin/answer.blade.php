@@ -10,7 +10,7 @@
     @foreach($answers as $answer)
     <div class="well">
         <h3><a href="answer/{{$answer->answerId}}">{{$answer->answer}}</a></h3>
-        <small>Created:{{$answer->created_at}}</small>     
+        <small>Created:{{$answer->created_at}} by {{$answer->user->name}}</small>     
     </div>
     <hr>
     @endforeach
@@ -22,6 +22,7 @@
 
 
 {{ Form::open(array('action' => 'AnswerController@create', 'method' => 'get')) }}
+    @csrf
     <div class="row">
         {!! Form::submit('Create Answer', ['class' => 'button']) !!}
     </div>

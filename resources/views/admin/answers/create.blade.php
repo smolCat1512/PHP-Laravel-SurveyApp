@@ -5,7 +5,7 @@
 @section('content')
 
     {{ Form::open(array('action' => 'AnswerController@store', 'id' => 'createanswer', 'method' => 'POST'))  }}
-
+    @csrf
 <div class="form-group">
         {!! Form::label('answer', 'Answer:') !!}
         {!! Form::text('answer', null, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}

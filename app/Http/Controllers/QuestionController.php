@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Questionnaire;
 
 class QuestionController extends Controller
 {
@@ -53,6 +54,7 @@ class QuestionController extends Controller
         ]);
 
         $question = new Question;
+        $question->user_id = auth()->user()->id;
         $question->question = $request->input('question');
         $question->save();
 

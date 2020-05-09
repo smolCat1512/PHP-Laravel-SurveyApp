@@ -17,27 +17,21 @@ class Question extends Model
 
     public function questionnaires()
     {
-        return $this->belongsToMany('App\Questionnaire');
+        return $this->belongsToMany('App\Questionnaire', 'foreign_key');
     }
 
     /**
-     * Get the answers associated with the given question.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function answers()
-    {
-        return $this->belongsToMany('App\Question');
-    }
-
-    /**
-     * Get the user associated with the given question
+     * Get the user associated with the given questionnaire
      *
      * @return mixed
      */
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function answer()
+    {
+        return $this->hasMany('App\Answer', 'foreign_key');
     }
 }

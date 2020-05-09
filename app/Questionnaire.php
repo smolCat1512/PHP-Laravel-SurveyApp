@@ -16,23 +16,17 @@ class Questionnaire extends Model
     protected $primaryKey = 'questionnaireId';
     
     /**
-     * Get the questions associated with the given questionnaire.
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function questions()
-    {
-        return $this->belongsToMany('App\Question');
-    }
-
-    /**
      * Get the user associated with the given questionnaire
      *
      * @return mixed
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'questionnaire_user', 'user_id', 'questionnaire_id');
+        return $this->belongsTo('App\User');
+    }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Question', 'foreign_key');
     }
 }
