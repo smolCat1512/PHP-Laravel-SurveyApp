@@ -81,6 +81,14 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
+
+        $question = Question::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$question->user_id) {
+            return redirect('question')->with('error', 'Unauthorised page');
+        }
+
         $question = Question::find($id);
         return view ('admin.questions.edit')->with('question', $question);
     }
@@ -113,6 +121,14 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
+
+        $question = Question::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$question->user_id) {
+            return redirect('question')->with('error', 'Unauthorised page');
+        }
+
         $question = Question::find($id);
         $question->delete();
         return redirect('admin/question')->with('success', 'Question deleted!!');

@@ -81,6 +81,14 @@ class AnswerController extends Controller
      */
     public function edit($id)
     {
+
+        $answer = Answer::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$answer->user_id) {
+            return redirect('answer')->with('error', 'Unauthorised page');
+        }
+
         $answer = Answer::find($id);
         return view ('admin.answers.edit')->with('answer', $answer);
     }
@@ -113,6 +121,14 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
+
+        $answer = Answer::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$answer->user_id) {
+            return redirect('answer')->with('error', 'Unauthorised page');
+        }
+
         $answer = Answer::find($id);
         $answer->delete();
         return redirect('admin/answer')->with('success', 'Answer deleted!!');

@@ -17,7 +17,7 @@ class Question extends Model
 
     public function questionnaires()
     {
-        return $this->belongsToMany('App\Questionnaire', 'foreign_key');
+        return $this->belongsToMany('App\Questionnaire');
     }
 
     /**
@@ -32,6 +32,6 @@ class Question extends Model
 
     public function answer()
     {
-        return $this->hasMany('App\Answer', 'foreign_key');
+        return $this->hasMany('App\Answer');
     }
 }

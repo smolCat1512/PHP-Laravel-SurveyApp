@@ -27,6 +27,6 @@ class Questionnaire extends Model
 
     public function questions()
     {
-        return $this->hasMany('App\Question', 'foreign_key');
+        return $this->hasMany('App\Question');
     }
 }

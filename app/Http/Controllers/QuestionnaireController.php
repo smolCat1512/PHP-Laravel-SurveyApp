@@ -85,6 +85,13 @@ class QuestionnaireController extends Controller
     public function edit($id)
     {
         $questionnaire = Questionnaire::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$questionnaire->user_id) {
+            return redirect('questionnaire')->with('error', 'Unauthorised page');
+        }
+        
+        $questionnaire = Questionnaire::find($id);
         return view ('admin.questionnaires.edit')->with('questionnaire', $questionnaire);
     }
 
@@ -118,6 +125,12 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
+
+        // Check for correct user
+        if(auth()->user()->id !==$questionnaire->user_id) {
+            return redirect('questionnaire')->with('error', 'Unauthorised page');
+        }
+
         $questionnaire = Questionnaire::find($id);
         $questionnaire->delete();
         return redirect('admin/questionnaire')->with('success', 'Questionnaire deleted!!');

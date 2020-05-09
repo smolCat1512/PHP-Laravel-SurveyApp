@@ -3,6 +3,7 @@
 @section('content')
 <a href="/admin/question" class="btn btn-default">Go Back</a>   
 <h1>{{$question->question}}</h1>
+<p>Belongs to questionnaire {{$questionnaire->questionnaireId}}</p>
 <hr> 
 <small>Created on:{{$question->created_at}}</small>
 <small>Updated on:{{$question->updated_at}}</small>
