@@ -9,7 +9,7 @@ $I->wantTo('create a question');
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('home');
+$I->amOnPage('dashboard');
 $I->see('Questions');
 // And
 $I->click('Questions');
@@ -17,16 +17,17 @@ $I->click('Questions');
 // Then
 $I->amOnPage('/admin/question');
 // And
-$I->see('Questions', 'h1');
+$I->see('Current Questions');
 $I->click('Create Question');
 
 // Then
-$I->amOnPage('/admin/questions/create');
+$I->amOnPage('/question/create');
 // And
 $I->submitForm('#createquestion', [
      'question' => 'Test Question',
 ]);
 // Then
 $I->seeCurrentUrlEquals('/admin/question');
-$I->see('Questions', 'h1');
+$I->see('Question created');
+$I->see('Current Questions');
 $I->see('Test Question');

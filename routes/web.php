@@ -35,7 +35,7 @@ Route::resource('response', 'ResponseController');
 
 Route::group(['middleware' => ['web']], function () {
   Auth::routes();
-  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
   Route::resource('/admin/answer', 'AnswerController');
   Route::resource('/admin/questionnaire', 'QuestionnaireController');
   Route::resource('/admin/question', 'QuestionController');

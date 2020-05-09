@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Home')
+@section('title', 'Dashboard')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">SurveyKitty Home</div>
+                <div class="card-header">SurveyKitty Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))

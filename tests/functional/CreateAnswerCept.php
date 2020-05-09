@@ -9,7 +9,7 @@ $I->wantTo('create an answer');
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('home');
+$I->amOnPage('dashboard');
 $I->see('Answers');
 // And
 $I->click('Answers');
@@ -17,16 +17,17 @@ $I->click('Answers');
 // Then
 $I->amOnPage('/admin/answer');
 // And
-$I->see('Answers', 'h1');
+$I->see('Current Answers');
 $I->click('Create Answer');
 
 // Then
-$I->amOnPage('/admin/answers/create');
+$I->amOnPage('/answer/create');
 // And
 $I->submitForm('#createanswer', [
      'answer' => 'Test Answer',
 ]);
 // Then
 $I->seeCurrentUrlEquals('/admin/answer');
-$I->see('Answers', 'h1');
+$I->see('Answer created');
+$I->see('Current Answers');
 $I->see('Test Answer');

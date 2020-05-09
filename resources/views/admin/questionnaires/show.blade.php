@@ -8,6 +8,12 @@
 <small>Created on:{{$questionnaire->created_at}}</small>
 <small>Updated on:{{$questionnaire->updated_at}}</small>
 <hr>
-<a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="btn btn-default">Edit</a>
+<a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="button">Edit</a>
+
+    {{Form::open(['action' => ['QuestionnaireController@destroy', $questionnaire->questionnaireId], 'method' => 'POST', 'class' => 'small-push-11'])}}
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Delete', ['class' => 'button'])}}
+    {!!Form::close()!!}
+
 @endsection
 

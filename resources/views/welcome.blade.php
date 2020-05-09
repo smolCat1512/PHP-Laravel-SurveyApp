@@ -81,7 +81,7 @@
                 <img src="{{URL::asset('/images/welcome.jpg')}}" alt="welcome picture" height="300" width="600">
 
                 <div class="links">
-                    <a href="/home">Researchers Area</a>
+                    <a href="/dashboard">Researchers Area</a>
                     <a href="/respondents">Respondents Area</a>
                 </div>
             </div>

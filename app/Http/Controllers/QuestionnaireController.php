@@ -116,6 +116,8 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-
+        $questionnaire = Questionnaire::find($id);
+        $questionnaire->delete();
+        return redirect('admin/questionnaire')->with('success', 'Questionnaire deleted!!');
     }
 }

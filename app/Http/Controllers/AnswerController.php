@@ -111,6 +111,8 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $answer = Answer::find($id);
+        $answer->delete();
+        return redirect('admin/answer')->with('success', 'Answer deleted!!');
     }
 }

@@ -9,7 +9,7 @@ $I->wantTo('create a questionnaire');
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('home');
+$I->amOnPage('dashboard');
 $I->see('Questionnaires');
 // And
 $I->click('Questionnaires');

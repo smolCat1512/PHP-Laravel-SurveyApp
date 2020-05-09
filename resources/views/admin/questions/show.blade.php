@@ -8,5 +8,11 @@
 <small>Updated on:{{$question->updated_at}}</small>
 <hr>
 <a href="/admin/questions/{{$question->questionId}}/edit" class="btn btn-default">Edit</a>
+
+{{Form::open(['action' => ['QuestionController@destroy', $question->questionId], 'method' => 'POST', 'class' => 'pull-right'])}}
+        {{Form::hidden('_method', 'DELETE')}}
+        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!}
+
 @endsection
 
