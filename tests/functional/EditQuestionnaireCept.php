@@ -18,38 +18,33 @@ $I->click('Questionnaires');
   // create a questionnaire in the db that we can then update
   $I->haveRecord('questionnaires', [
       'questionnaireId' => '250',
-      'user_id' => '1',
+      'user_id' => '0001',
       'title' => 'Randomtitle',
       'ethics' => 'Test ethics statement',
   ]);
 
-  // Check the user is in the db and can be seen
-  $I->seeRecord('questionnaires', ['title' => 'Randomtitle', 'id' => '0001']);
-
+  // Check the questionnaire is in the db and can be seen
+  $I->seeRecord('questionnaires', ['title' => 'Randomtitle', 'ethics' => 'Test ethics statement']);
 
   // When
-  $I->amOnPage('/admin/questionnaires');
-
-  // then
-
-  // Check the link is present - this is because there could potentially be many update links/buttons.
-  // each link can be identified by the users id as name.
-  $I->seeElement('a', ['name' => '0001']);
+  $I->amOnPage('/admin/questionnaire');
+  $I->see('Randomtitle');
   // And
-  $I->click('a', ['name' => '0001']);
+  $I->click('Randomtitle');
+
+  //Then
+  $I->amOnPage('/admin/questionnaire/250');
+  $I->see('Edit');
 
   // Then
-  $I->amOnPage('/admin/questionnaires/(\d+)~/edit');
-  // And
-  $I->see('Edit Questionnaire - Randomtitle', 'h1');
+  $I->amOnPage('/admin/questionnaire/250/edit');
+  // Then
+  $I->fillField('title', 'Updated Questionnaire');
+  $I->fillField('ethics', 'Updated Ethics');
+  $I->click('Edit Questionnaire');
 
   // Then
-  $I->fillField('title', 'UpdatedQuestionnaire');
-  // And
-  $I->click('Update Questionnaire');
-
-  // Then
-  $I->seeCurrentUrlEquals('/admin/questionnaires');
-  $I->seeRecord('questionnaires', ['title' => 'UpdatedQuestionnaire']);
-  $I->see('Questionnaires', 'h1');
-  $I->see('UpdatedQuestionnaire');
+  $I->seeCurrentUrlEquals('/admin/questionnaire');
+  $I->seeRecord('questionnaires', ['title' => 'Updated Questionnaire']);
+  $I->see('Questionnaires');
+  $I->see('Updated Questionnaire');

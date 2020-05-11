@@ -70,7 +70,9 @@ class QuestionController extends Controller
     public function show($id)
     {
         $question = Question::find($id);
-        return view ('admin.questions.show')->with('question', $question);
+        $questionnaire = Questionnaire::find($id);
+
+        return view ('admin.questions.show')->with('question', $question)->with('questionnaire', $questionnaire);
     }
 
     /**
@@ -83,6 +85,7 @@ class QuestionController extends Controller
     {
 
         $question = Question::find($id);
+        $questionnaire = Questionnaire::find($id);
 
         // Check for correct user
         if(auth()->user()->id !==$question->user_id) {
@@ -90,7 +93,7 @@ class QuestionController extends Controller
         }
 
         $question = Question::find($id);
-        return view ('admin.questions.edit')->with('question', $question);
+        return view ('admin.questions.edit')->with('question', $question)->with('questionniare', $questionnaire);
     }
 
     /**

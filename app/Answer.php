@@ -21,17 +21,17 @@ class Answer extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
-     * Get the user associated with the given questionnaire
+     * Get the question associated with the given answer
      *
      * @return mixed
      */
     public function question()
     {
-        return $this->belongsTo('App\Question');
+        return $this->belongsToMany(Question::class);
     }
 
 }

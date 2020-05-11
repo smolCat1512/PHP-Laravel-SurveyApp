@@ -4,29 +4,39 @@ $I = new FunctionalTester($scenario);
 $I->am('user');
 $I->wantTo('delete a questionnaire');
 
-// create a category in the db that we can then delete
-$I->haveRecord('questionnaires', [
-      'id' => '9999',
-      'title' => 'RandomQuestionnaire',
-      'ethics statement' => 'testEthics',
-]);
-
-// Check the user is in the db and can be seen
-$I->seeRecord('questionnaires', ['title' => 'RandomQuestionnaire', 'id' => '9999']);
-
+// log in as your admin user
+// This should be id of 1 if you created your manual login for a known user first.
+Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('/admin/questionnaires');
-
-// then
-
-// Check  the link is present - this is because there could potentially be many update links/buttons.
-// each link can be identified by the users id as name.
-$I->seeElement('a', ['name' => '9999']);
+$I->amOnPage('dashboard');
+$I->see('Questionnaires');
 // And
-$I->click('Delete RandomQuestionnaire');
+$I->click('Questionnaires');
 
-// Then
-$I->amOnPage('/admin/questionnaires');
-// And
-$I->dontSeeElement('a', ['name' => '9999']);
+// create a questionnaire in the db that we can then update
+$I->haveRecord('questionnaires', [
+      'questionnaireId' => '250',
+      'user_id' => '0001',
+      'title' => 'Randomtitle',
+      'ethics' => 'Test ethics statement',
+]);
+
+// Check the questionnaire is in the db and can be seen
+$I->seeRecord('questionnaires', ['title' => 'Randomtitle', 'ethics' => 'Test ethics statement']);
+
+  // When
+  $I->amOnPage('/admin/questionnaire');
+  $I->see('Randomtitle');
+  // And
+  $I->click('Randomtitle');
+
+  //Then
+  $I->amOnPage('/admin/questionnaire/250');
+  $I->see('Randomtitle');
+  $I->click('Delete');
+
+  // Then
+  $I->seeCurrentUrlEquals('/admin/questionnaire');
+  $I->see('Questionnaires');
+  $I->see('Questionnaire deleted!!');

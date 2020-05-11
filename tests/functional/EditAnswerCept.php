@@ -2,40 +2,47 @@
   $I = new FunctionalTester($scenario);
 
   $I->am('user');
-  $I->wantTo('update an answer');
+  $I->wantTo('update a answer');
 
-  // create an answer in the db that we can then update
+
+// log in as your admin user
+// This should be id of 1 if you created your manual login for a known user first.
+Auth::loginUsingId(1);
+
+// When
+$I->amOnPage('dashboard');
+$I->see('Answers');
+// And
+$I->click('Answers');
+
+  // create a answer in the db that we can then update
   $I->haveRecord('answers', [
-      'id' => '0001',
-      'answer' => 'RandomAnswer',
+      'answerId' => '250',
+      'user_id' => '0001',
+      'answer' => 'Randomanswer',
   ]);
 
-  // Check the user is in the db and can be seen
-  $I->seeRecord('answers', ['answer' => 'RandomAnswer', 'id' => '0001']);
+  // Check the answer is in the db and can be seen
+  $I->seeRecord('answers', ['answer' => 'Randomanswer']);
 
   // When
-  $I->amOnPage('/admin/answers');
-
-  // then
-
-  // Check the link is present - this is because there could potentially be many update links/buttons.
-  // each link can be identified by the users id as name.
-  $I->seeElement('a', ['name' => '0001']);
+  $I->amOnPage('/admin/answer');
+  $I->see('Randomanswer');
   // And
-  $I->click('a', ['name' => '0001']);
+  $I->click('Randomanswer');
+
+  //Then
+  $I->amOnPage('/admin/answer/250');
+  $I->see('Edit');
 
   // Then
-  $I->amOnPage('/admin/answers/(\d+)~/edit');
-  // And
-  $I->see('Edit Answer - RandomAnswer', 'h1');
+  $I->amOnPage('/admin/answers/250/edit');
+  // Then
+  $I->fillField('answer', 'Updated Answer');
+  $I->click('Edit Answer');
 
   // Then
-  $I->fillField('answer', 'UpdatedAnswer');
-  // And
-  $I->click('Update Answer');
-
-  // Then
-  $I->seeCurrentUrlEquals('/admin/answers');
-  $I->seeRecord('answers', ['answer' => 'UpdatedAnswer']);
-  $I->see('Answers', 'h1');
-  $I->see('UpdatedAnswer');
+  $I->seeCurrentUrlEquals('/admin/answer');
+  $I->seeRecord('answers', ['answer' => 'Updated Answer']);
+  $I->see('Answers');
+  $I->see('Updated Answer');

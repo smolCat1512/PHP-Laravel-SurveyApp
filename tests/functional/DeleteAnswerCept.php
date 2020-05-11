@@ -4,28 +4,38 @@ $I = new FunctionalTester($scenario);
 $I->am('user');
 $I->wantTo('delete an answer');
 
-// create a category in the db that we can then delete
-$I->haveRecord('answers', [
-      'id' => '9999',
-      'answer' => 'RandomAnswer',
-]);
-
-// Check the user is in the db and can be seen
-$I->seeRecord('answers', ['answer' => 'RandomAnswer', 'id' => '9999']);
-
+// log in as your admin user
+// This should be id of 1 if you created your manual login for a known user first.
+Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('/admin/answers');
-
-// then
-
-// Check  the link is present - this is because there could potentially be many update links/buttons.
-// each link can be identified by the users id as name.
-$I->seeElement('a', ['name' => '9999']);
+$I->amOnPage('dashboard');
+$I->see('Answers');
 // And
-$I->click('Delete RandomAnswer');
+$I->click('Answers');
 
-// Then
-$I->amOnPage('/admin/answers');
-// And
-$I->dontSeeElement('a', ['name' => '9999']);
+// create a answer in the db that we can then update
+$I->haveRecord('answers', [
+      'answerId' => '20',
+      'user_id' => '0001',
+      'answer' => 'Randomanswer',
+]);
+
+// Check the answer is in the db and can be seen
+$I->seeRecord('answers', ['answer' => 'Randomanswer']);
+
+  // When
+  $I->amOnPage('/admin/answer');
+  $I->see('Randomanswer');
+  // And
+  $I->click('Randomanswer');
+
+  //Then
+  $I->amOnPage('/admin/answer/20');
+  $I->see('Randomanswer');
+  $I->click('Delete');
+
+  // Then
+  $I->seeCurrentUrlEquals('/admin/answer');
+  $I->see('Answers');
+  $I->see('Answer deleted!!');

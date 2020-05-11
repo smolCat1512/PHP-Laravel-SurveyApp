@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Questionnaire;
+use App\Question;
 use App\User;
 
 class QuestionnaireController extends Controller
@@ -73,7 +74,8 @@ class QuestionnaireController extends Controller
     public function show($id)
     {
         $questionnaire = Questionnaire::find($id);
-        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire);
+        $question = Question::find($id);
+        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire)->with('question', $question);
     }
 
     /**

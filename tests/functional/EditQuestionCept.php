@@ -4,39 +4,45 @@
   $I->am('user');
   $I->wantTo('update a question');
 
+
+// log in as your admin user
+// This should be id of 1 if you created your manual login for a known user first.
+Auth::loginUsingId(1);
+
+// When
+$I->amOnPage('dashboard');
+$I->see('Questions');
+// And
+$I->click('Questions');
+
   // create a question in the db that we can then update
   $I->haveRecord('questions', [
-      'id' => '0001',
+      'questionId' => '250',
+      'user_id' => '0001',
       'question' => 'Randomquestion',
   ]);
 
-  // Check the user is in the db and can be seen
-  $I->seeRecord('questions', ['question' => 'Randomquestion', 'id' => '0001']);
-
+  // Check the question is in the db and can be seen
+  $I->seeRecord('questions', ['question' => 'Randomquestion']);
 
   // When
-  $I->amOnPage('/admin/questions');
-
-  // then
-
-  // Check the link is present - this is because there could potentially be many update links/buttons.
-  // each link can be identified by the users id as name.
-  $I->seeElement('a', ['name' => '0001']);
+  $I->amOnPage('/admin/question');
+  $I->see('Randomquestion');
   // And
-  $I->click('a', ['name' => '0001']);
+  $I->click('Randomquestion');
+
+  //Then
+  $I->amOnPage('/admin/question/250');
+  $I->see('Edit');
 
   // Then
-  $I->amOnPage('/admin/questions/(\d+)~/edit');
-  // And
-  $I->see('Edit Question - Randomquestion', 'h1');
+  $I->amOnPage('/admin/questions/250/edit');
+  // Then
+  $I->fillField('question', 'Updated Question');
+  $I->click('Edit Question');
 
   // Then
-  $I->fillField('question', 'UpdatedQuestion');
-  // And
-  $I->click('Update Question');
-
-  // Then
-  $I->seeCurrentUrlEquals('/admin/questions');
-  $I->seeRecord('questions', ['question' => 'UpdatedQuestion']);
-  $I->see('Questions', 'h1');
-  $I->see('UpdatedQuestion');
+  $I->seeCurrentUrlEquals('/admin/question');
+  $I->seeRecord('questions', ['question' => 'Updated Question']);
+  $I->see('Questions');
+  $I->see('Updated Question');

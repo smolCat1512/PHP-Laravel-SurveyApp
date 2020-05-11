@@ -13,11 +13,11 @@ class Question extends Model
     ];
 
     protected $primaryKey = 'questionId';
+    
 
-
-    public function questionnaires()
+    public function questionnaire()
     {
-        return $this->belongsToMany('App\Questionnaire');
+        return $this->belongsToMany(Questionnaire::class);
     }
 
     /**
@@ -27,11 +27,11 @@ class Question extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function answer()
     {
-        return $this->hasMany('App\Answer');
+        return $this->hasMany(Answer::class);
     }
 }

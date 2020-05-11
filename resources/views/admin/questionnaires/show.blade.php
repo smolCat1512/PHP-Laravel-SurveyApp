@@ -7,6 +7,8 @@
 <hr> 
 <small>Created on:{{$questionnaire->created_at}}</small>
 <small>Updated on:{{$questionnaire->updated_at}}</small>
+
+<p>Question(s):{{$question->question}}</p>
 <hr>
 @if(!Auth::guest())
 @if(Auth::user()->id == $questionnaire->user_id)

@@ -22,11 +22,16 @@ class Questionnaire extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function questions()
+    public function question()
     {
-        return $this->hasMany('App\Question');
+        return $this->hasMany(Question::class);
+    }
+
+    public function answer()
+    {
+        return $this->hasMany(Answer::class);
     }
 }

@@ -4,28 +4,38 @@ $I = new FunctionalTester($scenario);
 $I->am('user');
 $I->wantTo('delete a question');
 
-// create a category in the db that we can then delete
-$I->haveRecord('questions', [
-      'id' => '9999',
-      'question' => 'RandomQuestion',
-]);
-
-// Check the user is in the db and can be seen
-$I->seeRecord('questions', ['question' => 'RandomQuestion', 'id' => '9999']);
-
+// log in as your admin user
+// This should be id of 1 if you created your manual login for a known user first.
+Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('/admin/questions');
-
-// then
-
-// Check  the link is present - this is because there could potentially be many update links/buttons.
-// each link can be identified by the users id as name.
-$I->seeElement('a', ['name' => '9999']);
+$I->amOnPage('dashboard');
+$I->see('Questions');
 // And
-$I->click('Delete RandomQuestion');
+$I->click('Questions');
 
-// Then
-$I->amOnPage('/admin/questions');
-// And
-$I->dontSeeElement('a', ['name' => '9999']);
+// create a question in the db that we can then update
+$I->haveRecord('questions', [
+      'questionId' => '20',
+      'user_id' => '0001',
+      'question' => 'Randomquestion',
+]);
+
+// Check the question is in the db and can be seen
+$I->seeRecord('questions', ['question' => 'Randomquestion']);
+
+  // When
+  $I->amOnPage('/admin/question');
+  $I->see('Randomquestion');
+  // And
+  $I->click('Randomquestion');
+
+  //Then
+  $I->amOnPage('/admin/question/20');
+  $I->see('Randomquestion');
+  $I->click('Delete');
+
+  // Then
+  $I->seeCurrentUrlEquals('/admin/question');
+  $I->see('Questions');
+  $I->see('Question deleted!!');
