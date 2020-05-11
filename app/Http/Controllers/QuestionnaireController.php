@@ -126,6 +126,9 @@ class QuestionnaireController extends Controller
     public function destroy($id)
     {
 
+        $questionnaire = Questionnaire::find($id);
+
+
         // Check for correct user
         if(auth()->user()->id !==$questionnaire->user_id) {
             return redirect('questionnaire')->with('error', 'Unauthorised page');
