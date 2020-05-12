@@ -11,7 +11,7 @@
         <div class="well">
             <h3><a href="questionnaire/{{$questionnaire->questionnaireId}}">{{$questionnaire->title}}</a></h3>
             <p>Ethics statement:{{$questionnaire->ethics}}</p>
-            <small>Created:{{$questionnaire->created_at}} by {{$questionnaire->user->name}}</small>     
+            <small>Created:{{$questionnaire->created_at}} by {{$questionnaire->user->name}}</small>
         </div>
         <hr>
         @endforeach
@@ -22,9 +22,12 @@
 
 {{ Form::open(array('action' => 'QuestionnaireController@create', 'method' => 'get')) }}
     @csrf
+    @if(!Auth::guest())
+
     <div class="row">
         {!! Form::submit('Create Questionnaire', ['class' => 'button']) !!}
     </div>
+    @endif
 {{ Form::close() }}
 
 @endsection

@@ -8,9 +8,9 @@
 <small>Updated on:{{$answer->updated_at}}</small>
 <hr>
 @if(Auth::user()->id == $answer->user_id)
-<a href="/admin/answers/{{$answer->answerId}}/edit" class="btn btn-default">Edit</a>
+<a href="/admin/answers/{{$answer->answerId}}/edit" class="btn btn-warning">Edit</a>
 
-{{Form::open(['action' => ['AnswerController@destroy', $answer->answerId], 'method' => 'POST', 'class' => 'pull-right'])}}
+{{Form::open(['action' => ['AnswerController@destroy', $answer->answerId], 'method' => 'POST', 'class' => 'small-push-11'])}}
 @csrf
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Question;
 use App\Questionnaire;
 
@@ -84,7 +85,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
 
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
         $questionnaire = Questionnaire::find($id);
 
         // Check for correct user
@@ -93,7 +94,7 @@ class QuestionController extends Controller
         }
 
         $question = Question::find($id);
-        return view ('admin.questions.edit')->with('question', $question)->with('questionniare', $questionnaire);
+        return view ('admin.questions.edit', compact('question'));
     }
 
     /**
@@ -109,7 +110,7 @@ class QuestionController extends Controller
             'question' => 'required',
         ]);
 
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
         $question->question = $request->input('question');
         $question->save();
 

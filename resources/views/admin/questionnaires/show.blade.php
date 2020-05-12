@@ -7,19 +7,18 @@
 <hr> 
 <small>Created on:{{$questionnaire->created_at}}</small>
 <small>Updated on:{{$questionnaire->updated_at}}</small>
-
-<p>Question(s):{{$question->question}}</p>
+<h3>Questions</h3>
+<p>{{ $question->question }}</p>
 <hr>
 @if(!Auth::guest())
 @if(Auth::user()->id == $questionnaire->user_id)
-<a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="button">Edit</a>
+<a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="btn btn-warning">Edit</a>
 
     {{Form::open(['action' => ['QuestionnaireController@destroy', $questionnaire->questionnaireId], 'method' => 'POST', 'class' => 'small-push-11'])}}
         @csrf
         {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete', ['class' => 'button'])}}
+        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
     @endif
 @endif
 @endsection
-

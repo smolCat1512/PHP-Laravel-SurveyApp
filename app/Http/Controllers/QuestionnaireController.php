@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Questionnaire;
 use App\Question;
 use App\User;
+use App\Answer;
 
 class QuestionnaireController extends Controller
 {
@@ -86,7 +87,9 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        $questionnaire = Questionnaire::find($id);
+        $questionnaire = Questionnaire::findOrFail($id);
+        $question = Question::find($id);
+
 
         // Check for correct user
         if(auth()->user()->id !==$questionnaire->user_id) {
@@ -94,7 +97,7 @@ class QuestionnaireController extends Controller
         }
         
         $questionnaire = Questionnaire::find($id);
-        return view ('admin.questionnaires.edit')->with('questionnaire', $questionnaire);
+        return view ('admin.questionnaires.edit', compact('questionnaire'));
     }
 
     /**
@@ -111,7 +114,7 @@ class QuestionnaireController extends Controller
             'ethics' => 'required',
         ]);
 
-        $questionnaire = Questionnaire::find($id);
+        $questionnaire = Questionnaire::findOrFail($id);
         $questionnaire->title = $request->input('title');
         $questionnaire->ethics = $request->input('ethics');
         $questionnaire->save();

@@ -15,23 +15,18 @@ class Question extends Model
     protected $primaryKey = 'questionId';
     
 
-    public function questionnaire()
-    {
-        return $this->belongsToMany(Questionnaire::class);
-    }
-
-    /**
-     * Get the user associated with the given questionnaire
-     *
-     * @return mixed
-     */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
+    }
+
+    public function questionnaire()
+    {
+        return $this->belongsTo('App\Questionnaire');
     }
 
     public function answer()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany('App\Answer');
     }
 }

@@ -82,7 +82,7 @@
 
                 <div class="links">
                     <a href="/dashboard">Researchers Area</a>
-                    <a href="/respondents">Respondents Area</a>
+                    <a href="/questionnaire">Respondents Area</a>
                 </div>
             </div>
         </div>

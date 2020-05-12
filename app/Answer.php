@@ -15,13 +15,13 @@ class Answer extends Model
     protected $primaryKey = 'answerId';
 
     /**
-     * Get the user associated with the given questionnaire
+     * Get the user associated with the given answer
      *
      * @return mixed
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
     }
 
     /**
@@ -31,7 +31,7 @@ class Answer extends Model
      */
     public function question()
     {
-        return $this->belongsToMany(Question::class);
+        return $this->belongsTo('App\Question');
     }
 
 }

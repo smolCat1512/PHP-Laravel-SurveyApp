@@ -4,7 +4,7 @@
 
 @section('content')
 
-    {{ Form::open(array('action' => ['QuestionnaireController@update', $questionnaire->questionnaireId], 'id' => 'editquestionnaire', 'method' => 'POST'))  }}
+{{ Form::open(array('action' => ['QuestionnaireController@update', $questionnaire->questionnaireId], 'id' => 'editquestionnaire', 'method' => 'POST'))  }}
     @csrf
 <div class="form-group">
         {!! Form::label('title', 'Title:') !!}
@@ -15,7 +15,7 @@
         {!! Form::label('ethics', 'Ethics:') !!}
         {!! Form::text('ethics', $questionnaire->ethics, ['class' => 'form-control', 'placeholder' => 'Type here...']) !!}
     </div>
-        {{Form::hidden('_method', 'PUT')}}
+    {{Form::hidden('_method', 'PUT')}}
         {!! Form::submit('Edit Questionnaire', ['class' => 'button']) !!}        
 {!! Form::close() !!}
 

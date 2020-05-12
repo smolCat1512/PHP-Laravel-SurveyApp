@@ -15,7 +15,7 @@ class ResponseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/questionnaire')->with('questionnaires', $questionnaires); 
     }
 
     /**

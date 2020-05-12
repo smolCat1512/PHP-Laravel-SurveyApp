@@ -18,7 +18,7 @@ class CreateAnswersTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('question_id')->unsigned()->nullable();
-            $table->foreign('question_id')->references('questionId')->on('questions');
+            $table->foreign('question_id')->references('questionId')->on('questions')->onDelete('cascade');
             $table->string('answer');
             $table->timestamps();
         });
