@@ -39,6 +39,9 @@
                             </div>
                         </div>
 
+
+                        <a href="/">Back to welcome screen</a>
+                                    
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

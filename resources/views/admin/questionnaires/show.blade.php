@@ -8,8 +8,17 @@
 <small>Created on:{{$questionnaire->created_at}}</small>
 <small>Updated on:{{$questionnaire->updated_at}}</small>
 <h3>Questions</h3>
-<p>{{ $question->question }}</p>
+@if (isset ($questions))
+<ul>
+@foreach($questions as $question)
+<li>{{ $question->question }}</li>
+@endforeach
+</ul>
+@else
+<p>No current questions</p>
+@endif
 <hr>
+
 @if(!Auth::guest())
 @if(Auth::user()->id == $questionnaire->user_id)
 <a href="/admin/questionnaires/{{$questionnaire->questionnaireId}}/edit" class="btn btn-warning">Edit</a>

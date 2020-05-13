@@ -6,8 +6,28 @@
 <hr> 
 <small>Created on:{{$question->created_at}}</small>
 <small>Updated on:{{$question->updated_at}}</small>
-<h2>Part of questionnaire:</h2>
-<p>{{ $questionnaire->title }}</p>
+
+<h2>Part of these questionnaires:</h2>
+@if (isset ($questionnaires))
+<ul>
+@foreach($questionnaires as $questionnaire)
+<li>{{ $questionnaire->title }}</li>
+@endforeach
+</ul>
+@else
+<p>Not currently a part of any questionnaires</p>
+@endif
+
+<h2>Answer choices:</h2>
+@if (isset ($answers))
+<ul>
+@foreach($answers as $answer)
+<li>{{ $answer->title }}</li>
+@endforeach
+</ul>
+@else
+<p>No current answer options set on this question</p>
+@endif
 
 <hr>
 @if(Auth::user()->id == $question->user_id)

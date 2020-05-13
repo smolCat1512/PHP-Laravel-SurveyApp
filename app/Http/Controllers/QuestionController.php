@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Question;
 use App\Questionnaire;
+use App\Answer;
 
 class QuestionController extends Controller
 {
@@ -39,7 +40,10 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('admin/questions/create');
+        $qests = Questionnaire::pluck('questionnaireId', 'title');
+
+        // now we can return the data with the view
+        return view('admin/questions/create', compact('qests'));
     }
 
     /**
@@ -50,14 +54,15 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->validate([
-            'question' => 'required',
+        $this->validate($request, [
+            'question' => 'bail|required|unique:questions|min:8|max:150',
         ]);
 
-        $question = new Question;
-        $question->user_id = auth()->user()->id;
-        $question->question = $request->input('question');
-        $question->save();
+            $question = new Question;
+            $question->user_id()->auth()->user()->id;
+            $question = Question::create($request->all());
+            $question->questionnaire()->attach($request->input('questionnaire'));
+            $question->save();
 
         return redirect('admin/question')->with('success', 'Question created!!');
     }
@@ -72,8 +77,9 @@ class QuestionController extends Controller
     {
         $question = Question::find($id);
         $questionnaire = Questionnaire::find($id);
+        $answer = Answer::find($id);
 
-        return view ('admin.questions.show')->with('question', $question)->with('questionnaire', $questionnaire);
+        return view ('admin.questions.show')->with('question', $question)->with('questionnaire', $questionnaire)->with('answer', $answer);
     }
 
     /**
@@ -111,8 +117,7 @@ class QuestionController extends Controller
         ]);
 
         $question = Question::findOrFail($id);
-        $question->question = $request->input('question');
-        $question->save();
+        $question->update($requrest->all());
 
         return redirect('admin/question')->with('success', 'Question edited!!');
     }

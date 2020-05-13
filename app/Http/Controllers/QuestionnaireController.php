@@ -76,7 +76,8 @@ class QuestionnaireController extends Controller
     {
         $questionnaire = Questionnaire::find($id);
         $question = Question::find($id);
-        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire)->with('question', $question);
+        $answer = Answer::find($id);
+        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire)->with('question', $question)->with('answer', $answer);
     }
 
     /**

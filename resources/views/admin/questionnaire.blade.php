@@ -23,7 +23,6 @@
 {{ Form::open(array('action' => 'QuestionnaireController@create', 'method' => 'get')) }}
     @csrf
     @if(!Auth::guest())
-
     <div class="row">
         {!! Form::submit('Create Questionnaire', ['class' => 'button']) !!}
     </div>

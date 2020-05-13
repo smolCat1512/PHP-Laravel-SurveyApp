@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/dashboard">Dashboard</a></li>
       <li><a href="/auth/login">Researchers Login/Logout</a></li>
-      <li><a href="/respondents">Respondents Area</a></li>
+      <li><a href="/questionnaire">Respondents Area</a></li>
     </ul>
   </div>
 </nav>

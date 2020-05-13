@@ -22,7 +22,7 @@ class Question extends Model
 
     public function questionnaire()
     {
-        return $this->belongsTo('App\Questionnaire');
+        return $this->belongsToMany('App\Questionnaire');
     }
 
     public function answer()
