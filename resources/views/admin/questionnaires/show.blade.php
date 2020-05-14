@@ -11,7 +11,7 @@
 @if (isset ($questions))
 <ul>
 @foreach($questions as $question)
-<li>{{ $question->question }}</li>
+<li>{{ $question }}</li>
 @endforeach
 </ul>
 @else

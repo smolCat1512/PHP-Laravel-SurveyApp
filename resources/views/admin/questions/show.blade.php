@@ -22,7 +22,7 @@
 @if (isset ($answers))
 <ul>
 @foreach($answers as $answer)
-<li>{{ $answer->title }}</li>
+<li>{{ $answer->answer }}</li>
 @endforeach
 </ul>
 @else

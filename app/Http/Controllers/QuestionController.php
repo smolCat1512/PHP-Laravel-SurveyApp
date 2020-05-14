@@ -54,14 +54,13 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'question' => 'bail|required|unique:questions|min:8|max:150',
+        $data = request()->validate([
+            'question' => 'required',
         ]);
-
             $question = new Question;
-            $question->user_id()->auth()->user()->id;
-            $question = Question::create($request->all());
-            $question->questionnaire()->attach($request->input('questionnaire'));
+            $question->user_id = auth()->user()->id;
+            $question->questionnaire()->match($request->input('questionnaire_id'));
+            $question->question = $request->input('question');
             $question->save();
 
         return redirect('admin/question')->with('success', 'Question created!!');

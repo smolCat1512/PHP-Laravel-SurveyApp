@@ -89,7 +89,7 @@ class QuestionnaireController extends Controller
     public function edit($id)
     {
         $questionnaire = Questionnaire::findOrFail($id);
-        $question = Question::find($id);
+        $question = Question::findOrFail($id);
 
 
         // Check for correct user

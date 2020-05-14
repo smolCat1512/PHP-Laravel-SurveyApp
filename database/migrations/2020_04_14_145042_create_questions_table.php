@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('questionId');
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('questionnaire_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('questionnaire_id')->unsigned();
             $table->foreign('questionnaire_id')->references('questionnaireId')->on('questionnaires')->onDelete('cascade');
             $table->string('question');
             $table->timestamps();

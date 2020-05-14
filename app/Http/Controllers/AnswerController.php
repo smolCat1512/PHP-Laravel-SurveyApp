@@ -56,6 +56,7 @@ class AnswerController extends Controller
 
         $answer = new Answer;
         $answer->user_id = auth()->user()->id;
+        //QuestionID pulll in needed here
         $answer->answer = $request->input('answer');
         $answer->save();
 

@@ -10,7 +10,7 @@
     @foreach($questions as $question)
     <div class="well">
         <h3><a href="question/{{$question->questionId}}">{{$question->question}}</a></h3>
-        <small>Created:{{$question->created_at}} by {{$question->user->name}}</small>     
+        <small>Created:{{$question->created_at}}</small>     
     </div>
     <hr>
     @endforeach
@@ -18,7 +18,6 @@
     @else
     <p>No questions created yet</p>
     @endif
-
 
 
 {{ Form::open(array('action' => 'QuestionController@create', 'method' => 'get')) }}
