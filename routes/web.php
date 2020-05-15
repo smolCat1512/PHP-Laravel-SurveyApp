@@ -15,36 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/auth/login', function(){
-  return view ('auth.login');
-});
-
-Route::resource('response', 'ResponseController');
-
-
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
+* Authorised area routes - must be a logged in user to access these routes
 */
 
-Route::group(['middleware' => ['web']], function () {
-  Auth::routes();
-  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-  Route::resource('/admin/answer', 'AnswerController');
-  Route::resource('/admin/questionnaire', 'QuestionnaireController');
-  Route::resource('/admin/question', 'QuestionController');
-  Route::resource('/admin/answers', 'AnswerController');
-  Route::resource('/admin/questionnaires', 'QuestionnaireController');
-  Route::resource('/admin/questions', 'QuestionController');
-  Route::resource('questionnaire', 'QuestionnaireController');
-  Route::resource('question', 'QuestionController');
-  Route::resource('answer', 'AnswerController');
-});
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/questionnaires/create', 'QuestionnaireController@create');
+Route::post('/questionnaires', 'QuestionnaireController@store');
+Route::get('/questionnaires/{questionnaire}', 'QuestionnaireController@show');

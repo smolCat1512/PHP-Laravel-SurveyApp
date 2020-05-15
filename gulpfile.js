@@ -1,6 +1,6 @@
 var elixir = require('laravel-elixir');
 
-elixir(function(mix) {
+elixir(function (mix) {
 
     // Compile CSS
     mix.sass(
@@ -18,6 +18,5 @@ elixir(function(mix) {
         'public/js/app.js', // Destination file
         'vendor/bower_components/foundation/js/' // Source files base directory
     );
-
 
 });

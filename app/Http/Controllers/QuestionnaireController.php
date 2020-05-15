@@ -3,35 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Questionnaire;
-use App\Question;
-use App\User;
-use App\Answer;
 
 class QuestionnaireController extends Controller
 {
 
-    /*
-    * Secure the set of pages to the admin.
-    */
     public function __construct()
     {
-       $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        {
-            // get all the questionnaires
-            $questionnaires = Questionnaire::orderBy('created_at','desc')->paginate(2);            
-            return view('admin/questionnaire')->with('questionnaires', $questionnaires);
-        }
+        $this->middleware('auth');
     }
 
     /**
@@ -41,7 +19,7 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        return view('admin/questionnaires/create');
+        return view('questionnaire.create');
     }
 
     /**
@@ -57,91 +35,14 @@ class QuestionnaireController extends Controller
             'ethics' => 'required',
         ]);
 
-        $questionnaire = new Questionnaire;
-        $questionnaire->user_id = auth()->user()->id;
-        $questionnaire->title = $request->input('title');
-        $questionnaire->ethics = $request->input('ethics');
-        $questionnaire->save();
-
-        return redirect('admin/questionnaire')->with('success', 'Questionnaire created!!');
+        $questionnaire = auth()->user()->questionnaires()->create($data);
+    
+        return redirect('/questionnaires/'.$questionnaire->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(\App\Questionnaire $questionnaire)
     {
-        $questionnaire = Questionnaire::find($id);
-        $question = Question::find($id);
-        $answer = Answer::find($id);
-        return view ('admin.questionnaires.show')->with('questionnaire', $questionnaire)->with('question', $question)->with('answer', $answer);
+        return view('questionnaire.show', compact('questionnaire'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $questionnaire = Questionnaire::findOrFail($id);
-        $question = Question::findOrFail($id);
-
-
-        // Check for correct user
-        if(auth()->user()->id !==$questionnaire->user_id) {
-            return redirect('questionnaire')->with('error', 'Unauthorised page');
-        }
-        
-        $questionnaire = Questionnaire::find($id);
-        return view ('admin.questionnaires.edit', compact('questionnaire'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $data = request()->validate([
-            'title' => 'required',
-            'ethics' => 'required',
-        ]);
-
-        $questionnaire = Questionnaire::findOrFail($id);
-        $questionnaire->title = $request->input('title');
-        $questionnaire->ethics = $request->input('ethics');
-        $questionnaire->save();
-
-        return redirect('admin/questionnaire')->with('success', 'Questionnaire edited!!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
-        $questionnaire = Questionnaire::find($id);
-
-
-        // Check for correct user
-        if(auth()->user()->id !==$questionnaire->user_id) {
-            return redirect('questionnaire')->with('error', 'Unauthorised page');
-        }
-
-        $questionnaire = Questionnaire::find($id);
-        $questionnaire->delete();
-        return redirect('admin/questionnaire')->with('success', 'Questionnaire deleted!!');
-    }
 }
