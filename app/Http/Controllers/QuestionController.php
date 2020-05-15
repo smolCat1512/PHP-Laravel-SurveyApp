@@ -7,6 +7,7 @@ use App\User;
 use App\Question;
 use App\Questionnaire;
 use App\Answer;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -57,12 +58,11 @@ class QuestionController extends Controller
         $data = request()->validate([
             'question' => 'required',
         ]);
-            $question = new Question;
-            $question->user_id = auth()->user()->id;
-            $question->questionnaire()->match($request->input('questionnaire_id'));
-            $question->question = $request->input('question');
+            $question = Question::create($request->all());
+            $question->user_id = Auth::user()->id;
+            $question->questionnaire()->attach($request->input('questionnaire'));
             $question->save();
-
+            
         return redirect('admin/question')->with('success', 'Question created!!');
     }
 
@@ -72,13 +72,11 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Question $question)
     {
-        $question = Question::find($id);
-        $questionnaire = Questionnaire::find($id);
-        $answer = Answer::find($id);
+        $question = Question::find($question);
 
-        return view ('admin.questions.show')->with('question', $question)->with('questionnaire', $questionnaire)->with('answer', $answer);
+        return view ('admin.questions.show',compact('question'));
     }
 
     /**
@@ -116,7 +114,7 @@ class QuestionController extends Controller
         ]);
 
         $question = Question::findOrFail($id);
-        $question->update($requrest->all());
+        $question->update($request->all());
 
         return redirect('admin/question')->with('success', 'Question edited!!');
     }

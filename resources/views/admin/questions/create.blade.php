@@ -12,8 +12,8 @@
     </div>
     
     <div class="form-group">
-        {!! Form::label('', 'Questionnaire:') !!}
-        {!! Form::select('questionnaire_id[]', $qests, null,['class' => 'form-control', 'multiple']) !!}
+        {!! Form::label('questionnaire', 'Questionnaire:') !!}
+        {!! Form::select('questionnaire[]', $qests, null, ['class' => 'form-control', 'multiple']) !!}
     </div>
         {!! Form::submit('Create Question', ['class' => 'button']) !!}
 

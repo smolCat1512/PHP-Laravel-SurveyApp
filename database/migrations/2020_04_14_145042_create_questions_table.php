@@ -15,10 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('questionId');
-            $table->unsignedBigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('questionnaire_id')->unsigned();
-            $table->foreign('questionnaire_id')->references('questionnaireId')->on('questionnaires')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->unsigned()->default(0);
+            $table->unsignedBigInteger('questionnaire_id')->unsigned()->default(0);
+            $table->foreign('questionnaire_id')->references('questionnaireId')->on('questionnaires');
             $table->string('question');
             $table->timestamps();
         });
