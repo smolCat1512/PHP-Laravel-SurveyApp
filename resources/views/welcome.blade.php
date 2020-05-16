@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/home">Respondents Area</a>
+                    <a href="/respondents">Respondents Area</a>
                 </div>
 
             </div>

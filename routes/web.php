@@ -15,15 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/respondents', 'RespondentsController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*
 * Authorised area routes - must be a logged in user to access these routes
 */
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();{
 
 Route::get('/questionnaires/create', 'QuestionnaireController@create');
 Route::post('/questionnaires', 'QuestionnaireController@store');
@@ -36,4 +35,4 @@ Route::delete('/questionnaires/{questionnaire}/questions/{question}', 'QuestionC
 Route::get('/surveys/{questionnaire}-{slug}', 'SurveyController@show');
 Route::post('/surveys/{questionnaire}-{slug}', 'SurveyController@store');
 Route::get('/home', 'HomeController@index')->name('home');
-
+}

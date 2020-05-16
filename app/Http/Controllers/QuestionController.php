@@ -46,7 +46,7 @@ class QuestionController extends Controller
         return redirect($questionnaire->path());
     }
 
-/**
+    /**
      * Show the form for editing a resource.
      *
      * @return \Illuminate\Http\Response
