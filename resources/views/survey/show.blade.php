@@ -5,8 +5,32 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Create new Questionnaire</div>
+
+                <h1> {{ $questionnaire->title }}</h1>
+
+                <h2> {{ $questionnaire->ethics }}</h2>
+
+
+
+                <form action="#" method="post">
+                
+                @csrf            
+
+                @foreach($questionnaire->questions as $key => $question)
+                <div class="card mt-5">
+                <div class="card-header"><strong>{{ $key + 1 }}</strong> {{ $question->question }}</div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach($question->answers as $answer)
+                        <li class="list-group-item">{{ $answer->answer }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+                @endforeach
+                
+                </form>
 
                 <div class="card-body">
                     <form action="/questionnaires" method="post">
