@@ -83,6 +83,11 @@
                 <div class="links">
                     <a href="/home">Researchers Area</a>
                 </div>
+
+                <div class="links">
+                    <a href="/home">Respondents Area</a>
+                </div>
+
             </div>
         </div>
     </body>

@@ -8,19 +8,12 @@
             <div class="card">
                 <div class="card-header">SurveyKitty Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    <a href="/questionnaires/create" class="btn btn-primary">Create New Questionnaire</a>
+                    <a href="/questionnaires/create" class="btn btn-primary">Questionnaires/a>
                 </div>
             </div>
 
             <div class="card mt-4">
-                <div class="card-header">My Questionnaires</div>
+                <div class="card-header">Questionnaires</div>
 
                 <div class="card-body">
                     <ul class="list-group">

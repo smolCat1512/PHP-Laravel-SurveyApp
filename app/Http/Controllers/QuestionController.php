@@ -14,7 +14,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(\App\Questionnaire $questionnaire)
+    public function create(Questionnaire $questionnaire)
     {
         return view('question.create', compact('questionnaire'));
     }
@@ -25,7 +25,7 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Questionnaire $questionnaire)
+    public function store(Questionnaire $questionnaire)
     {
         $data = request()->validate([
             'question.question' => 'required',
@@ -36,6 +36,24 @@ class QuestionController extends Controller
         $question->answers()->createMany($data['answers']);
 
         return redirect('/questionnaires/'.$questionnaire->id);
+    }
+
+    public function destroy(Questionnaire $questionnaire, Question $question) 
+    {
+        $question->answers()->delete();
+        $question->delete();
+
+        return redirect($questionnaire->path());
+    }
+
+/**
+     * Show the form for editing a resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Questionnaire $questionnaire)
+    {
+        return view('question.edit', compact('questionnaire'));
     }
 
 }
