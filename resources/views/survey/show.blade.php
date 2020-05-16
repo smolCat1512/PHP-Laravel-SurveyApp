@@ -47,46 +47,40 @@
                 </div>
                 @endforeach
 
+
+                <div class="card mt-3">
+                    <div class="card-header">Extra requirements</div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="feedback">Your Feedback</label>
+                            <input name="survey[feedback]" type="text" class="form-control" id="feedbackHelp"
+                                aria-describedby="feedbackHelp" placeholder="Feedback here...">
+                            <small id="feedbackHelp" class="form-text text-muted">Hi, please provide any feedback, if
+                                none
+                                just something to allow form submission</small>
+                            @error('feedback')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input name="survey[email]" type="text" class="form-control" id="email"
+                                aria-describedby="emailHelp" placeholder="Enter email...or not">
+                            <small id="emailHelp" class="form-text text-muted">Enter your email if you wish to be kept
+                                up to date on new surveys, if not just type some junk:)</small>
+
+                            @error('email')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
+                            <div>
+                                <button class="btn btn-info mt-3" type="submit">Complete Survey</button>
+                            </div>
+                        </div>
             </form>
-
-            <div class="card mt-3">
-                <div class="card-header">Extra requirements</div>
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label for="feedback">Your Feedback</label>
-                        <input name="feedback" type="text" class="form-control" id="feedbackHelp"
-                            aria-describedby="feedbackHelp" placeholder="Feedback here...">
-                        <small id="feedbackHelp" class="form-text text-muted">Hi, please provide any feedback, if none
-                            just something to allow form submission</small>
-                        @error('feedback')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ethicsAgreement">Your Email</label>
-                        <input name="survey[ethicsAgreement]" type="ethicsAgreement" class="form-control"
-                            id="ethicsAgreement" aria-describedby="emailHelp"
-                            placeholder="Enter some text here to confirm you agree">
-                        <small id="emailHelp" class="form-text text-muted">Entering any text here confirms you agree
-                            with ethics statement, required before you can submit </small>
-
-                        @error('ethicsAgreement')
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <button class="btn btn-info mt-3" type="submit">Complete Survey</button>
-
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 @endsection

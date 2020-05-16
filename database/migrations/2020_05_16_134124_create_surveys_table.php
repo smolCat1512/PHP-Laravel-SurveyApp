@@ -17,7 +17,7 @@ class CreateSurveysTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('questionnaire_id');
             $table->string('feedback');
-            $table->string('ethicsAgreement');
+            $table->string('email');
             $table->timestamps();
         });
     }
