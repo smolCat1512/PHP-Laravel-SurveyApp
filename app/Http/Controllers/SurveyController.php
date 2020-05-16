@@ -20,9 +20,13 @@ class SurveyController extends Controller
         $data = request()->validate([
             'responses.*.answer_id' => 'required',
             'responses.*.question_id' => 'required',
+            'survey.feedback' => 'required',
+            'survey.ethicsAgreement' => 'required|in:true',
         ]);
 
-        $survey = $questionnaire->survey()->create();
-    }
+        $survey = $questionnaire->surveys()->create($data['survey']);
+        $survey->responses()->createMany($data['responses']);
 
+        return "Thank you for your opinion!";
+    }
 }
