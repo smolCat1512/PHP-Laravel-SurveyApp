@@ -47,4 +47,16 @@ class QuestionnaireController extends Controller
         
         return view('questionnaire.show', compact('questionnaire'));
     }
+
+    /**
+     * Show the form for editing a resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $questionnaire = auth()->user()->questionnaires()->edit($data);
+
+        return view('questionnaire.edit')->with('questionnaire', $questionnaire);
+    }
 }

@@ -46,14 +46,4 @@ class QuestionController extends Controller
         return redirect($questionnaire->path());
     }
 
-    /**
-     * Show the form for editing a resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Questionnaire $questionnaire)
-    {
-        return view('question.edit', compact('questionnaire'));
-    }
-
 }

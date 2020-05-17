@@ -11,6 +11,10 @@
 |
 */
 
+/*
+*   Routes open to all users
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,6 +33,7 @@ Route::group(['middleware' => ['web']], function() {
 Route::get('/questionnaires/create', 'QuestionnaireController@create');
 Route::post('/questionnaires', 'QuestionnaireController@store');
 Route::get('/questionnaires/{questionnaire}', 'QuestionnaireController@show');
+Route::post('/questionnaires/{questionnaire->id}/edit', 'QuestionnaireController@edit');
 
 Route::get('/questionnaires/{questionnaire}/questions/create', 'QuestionController@create');
 Route::post('/questionnaires/{questionnaire}/questions', 'QuestionController@store');
@@ -36,5 +41,4 @@ Route::delete('/questionnaires/{questionnaire}/questions/{question}', 'QuestionC
 
 Route::get('/surveys/{questionnaire}-{slug}', 'SurveyController@show');
 Route::post('/surveys/{questionnaire}-{slug}', 'SurveyController@store');
-
 });
