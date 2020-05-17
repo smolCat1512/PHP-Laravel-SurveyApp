@@ -33,7 +33,8 @@ Route::group(['middleware' => ['web']], function() {
 Route::get('/questionnaires/create', 'QuestionnaireController@create');
 Route::post('/questionnaires', 'QuestionnaireController@store');
 Route::get('/questionnaires/{questionnaire}', 'QuestionnaireController@show');
-Route::resource('questionnaires', 'QuestionnaireController');
+Route::get('/questionnaire/{questionnaire}/edit', 'QuestionnaireController@edit');
+Route::patch('/questionnaires/{questionnaire}', 'QuestionnaireController@update');
 
 Route::get('/questionnaires/{questionnaire}/questions/create', 'QuestionController@create');
 Route::post('/questionnaires/{questionnaire}/questions', 'QuestionController@store');

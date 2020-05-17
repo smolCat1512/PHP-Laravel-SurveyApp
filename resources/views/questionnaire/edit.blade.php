@@ -9,8 +9,8 @@
                 <div class="card-header">Edit Questionnaire</div>
 
                 <div class="card-body">
-                    <form action="/questionnaires" method="post">
-
+                    <form action="/questionnaires/{{ $questionnaire->id }}" method="post">
+                    @method('PATCH')
                     @csrf
 
                     <div class="form-group">

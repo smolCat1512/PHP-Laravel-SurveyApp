@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Questionnaire;
+
 
 class QuestionnaireController extends Controller
 {
@@ -55,15 +57,22 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
+        $questionnaire = Questionnaire::findOrFail($id);
+
         return view('questionnaire.edit', compact('questionnaire'));
     }
 
     public function update(Request $request, $id)
     {
-        $questionnaire = questionnaire::findOrFail($id);
+        $data = request()->validate([
+            'title' => 'required',
+            'ethics' => 'required',
+        ]);
+
+        $questionnaire = Questionnaire::findOrFail($id);
 
         $questionnaire->update($request->all());
 
-        return redirect('questionnaire');
+        return redirect('/home');
     }
 }
