@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance with auth binding
      *
      * @return void
      */
@@ -16,6 +16,10 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    /*
+    *   Index function, checks auth so only logged in users questionnaires returned, 
+    *   then points to the blade bringing in the questionnaires
+    */
     public function index()
     {
         $questionnaires = auth()->user()->questionnaires;
