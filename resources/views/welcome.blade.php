@@ -55,6 +55,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .link2 {
+                margin-top: 2em;
+            }
+            small {
+                color: black;
+            }
         </style>
     </head>
     <body>
@@ -78,13 +84,15 @@
                     SurveyKitty Home
                 </div>
 
+                <small class="flex-center">Ps - the below is my cat looking inquisitively.....hence SurveyKitty</small>
+
                 <img src="{{URL::asset('/images/welcome.jpg')}}" alt="welcome picture" height="300" width="600">
 
                 <div class="links">
                     <a href="/home">Researchers Area</a>
                 </div>
 
-                <div class="links">
+                <div class="links link2">
                     <a href="/respondents">Respondents Area</a>
                 </div>
 
