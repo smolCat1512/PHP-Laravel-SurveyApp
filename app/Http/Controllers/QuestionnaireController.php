@@ -55,8 +55,15 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        $questionnaire = auth()->user()->questionnaires()->edit($data);
+        return view('questionnaire.edit', compact('questionnaire'));
+    }
 
-        return view('questionnaire.edit')->with('questionnaire', $questionnaire);
+    public function update(Request $request, $id)
+    {
+        $questionnaire = questionnaire::findOrFail($id);
+
+        $questionnaire->update($request->all());
+
+        return redirect('questionnaire');
     }
 }

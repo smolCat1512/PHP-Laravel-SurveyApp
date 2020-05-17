@@ -16,7 +16,7 @@
                         new
                         Question</a>
 
-                    <a class="btn btn-outline-warning btn-lg" href="/questionnaires/{{ $questionnaire->id }}/edit">Edit
+                    <a class="btn btn-outline-warning btn-lg" href="/questionnaires/{id}/edit">Edit
                         Questionnaire</a>
 
                     <a class="btn btn-outline-success btn-lg"

@@ -28,6 +28,8 @@ class SurveyController extends Controller
         $survey = $questionnaire->surveys()->create($data['survey']);
         $survey->responses()->createMany($data['responses']);
 
-        return 'Thank you for your opinion';
+        alert:('Thank you for your opinion');
+
+        return redirect('respondents');
     }
 }
