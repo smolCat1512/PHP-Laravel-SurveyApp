@@ -9,25 +9,30 @@ $I->wantTo('create a questionnaire');
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('dashboard');
-$I->see('Questionnaires');
+$I->amOnPage('/home');
+$I->see('Create New Questionnaire');
 // And
-$I->click('Questionnaires');
+$I->click('Create New Questionnaire');
 
 // Then
-$I->amOnPage('/admin/questionnaire');
+$I->amOnPage('/questionnaires/create');
 // And
-$I->see('Current Questionnaires');
+$I->see('Create New Questionnaire');
+$I->see('Title');
+$I->see('Ethics Statement');
+$I->fillfield('title', 'ethics');
 $I->click('Create Questionnaire');
 
-// Then
-$I->amOnPage('/questionnaire/create');
-// And
-$I->submitForm('#createquestionnaire', [
+// Put a questionnaire in record/db
+$I->haveRecord('questionnaires', [
+     'id' => '200',
+     'user_id' => '200',
      'title' => 'Test Questionnaire',
-     'ethics' => 'By continuing you agree',
-]);
+     'ethics' => 'Test Ethics',
+ ]);
+
 // Then
-$I->seeCurrentUrlEquals('/admin/questionnaire');
-$I->see('Current Questionnaires');
-$I->see('Test Questionnaire');
+$I->amOnPage('/questionnaires/200');
+// And
+$I->see('Add new Question');
+

@@ -7,7 +7,7 @@ non logged in users can access and take surveys -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="card mt-4">
-            <div class="card-header">My Questionnaires</div>
+            <div class="card-header">Questionnaires</div>
 
             <div class="card-body">
                 <ul class="list-group">

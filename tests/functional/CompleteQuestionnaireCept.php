@@ -2,62 +2,41 @@
 $I = new FunctionalTester($scenario);
 
 $I->am('respondent');
-$I->wantTo('complete a live questionnaire');
+$I->wantTo('complete a questionnaire');
 
-// When
-$I->amOnPage('/questionnaires');
-$I->see('Questionnaires', 'h1');
-// And
-$I->click('Test');
-
-// When
-$I->amOnPage('/questionnaires');
-$I->see('Questionnaires', 'h1');
-$I->see('Test Questionnaire');
-// And
-$I->click('Complete Questionnaire', 'button');
-
-// create a questionnaire in the db that we can then update
+// Put a questionnaire in record/db
 $I->haveRecord('questionnaires', [
-    'id' => '0001',
+    'id' => '200',
+    'user_id' => '200',
     'title' => 'Test Questionnaire',
-    'ethics statement' => 'Test ethics statement',
+    'ethics' => 'Test Ethics',
 ]);
-
-// Then
-$I->amOnPage('/questionnaires/(\d+)~');
-// And
-$I->see('Test Questionnaire', 'h1');
-$I->submitForm('.agreeethics', [
-     'title' => 'Test Questionnaire',
-     'ethics statement' => 'By continuing you agree...',
-     'agree?' => 'Yes'
-]);
-
-// create a question in the db that we can then update
+//Put a question in record/db
 $I->haveRecord('questions', [
-    'id' => '0001',
-    'question' => 'Randomquestion',
+    'id' => '200',
+    'questionnaire_id' => '200',
+    'question' => 'Test Question',
+]);
+// Put answers in the record/db
+$I->haveRecord('answers', [
+    'id' => '200',
+    'question_id' => '200',
+    'answer' => 'Test Answer',
 ]);
 
-// create an answer in the db that we can then update
-$I->haveRecord('answer', [
-    'id' => '0001',
-    'answer' => 'RandomAnswer',
-]);
+// When
+$I->amOnPage('/respondents');
+$I->see('Questionnaires');
+// And
+$I->click('Test Questionnaire');
 
-// create a second answer in the db that we can then update
-$I->haveRecord('answer', [
-    'id' => '0002',
-    'answer' => 'RandomAnswer2',
-]);
+// When
+$I->amOnPage('/surveys/200-test-questionnaire');
+$I->see('Test Questionnaire');
+$I->see('Test Question');
+$I->see('Test Answer');
+// And
+$I->click('Complete Survey', 'button');
 
 // Then
-$I->amOnPage('/questionnaires/(\d+)~/question 1');
-// And
-$I->see('Test Questionnaire', 'h1');
-$I->see('Question 1', 'h2');
-$I->see('Answers', 'h3');
-
-// then
-$I->click('Yes');
+$I->amOnPage('/respondents');

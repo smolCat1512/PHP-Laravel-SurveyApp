@@ -24,7 +24,7 @@ $I->see('Password');
 $I->click('Login');
 
 // Then
-$I->amOnPage('auth/login');
+$I->amOnPage('/login');
 $I->see('Login');
 $I->fillField('email', 'johnsmith@email.com');
 $I->fillField('Password', 'password123');

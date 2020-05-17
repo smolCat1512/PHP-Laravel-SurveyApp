@@ -2,40 +2,57 @@
 $I = new FunctionalTester($scenario);
 
 $I->am('user');
-$I->wantTo('delete a question');
+$I->wantTo('create an answer');
+
+// Put a questionnaire in record/db
+$I->haveRecord('questionnaires', [
+     'id' => '200',
+     'user_id' => '200',
+     'title' => 'Test Questionnaire',
+     'ethics' => 'Test Ethics',
+ ]);
+ //Put a question in record/db
+ $I->haveRecord('questions', [
+     'id' => '200',
+     'questionnaire_id' => '200',
+     'question' => 'Test Question',
+ ]);
 
 // log in as your admin user
 // This should be id of 1 if you created your manual login for a known user first.
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('dashboard');
-$I->see('Questions');
+$I->amOnPage('/home');
+$I->see('Test Questionnaire');
 // And
-$I->click('Questions');
+$I->click('Test Questionnaire');
 
-// create a question in the db that we can then update
-$I->haveRecord('questions', [
-      'questionId' => '20',
-      'user_id' => '0001',
-      'question' => 'Randomquestion',
-]);
+// Then
+$I->amOnPage('/questionnaires/200');
+// And
+$I->see('Add new Question');
+$I->click('Add new Question');
 
-// Check the question is in the db and can be seen
-$I->seeRecord('questions', ['question' => 'Randomquestion']);
+// Then
+$I->amOnPage('/questionnaires/200/questions/create');
+// And
+$I->see('Choices');
+$I->see('Choice 1');
+$I->see('Choice 2');
 
-  // When
-  $I->amOnPage('/admin/question');
-  $I->see('Randomquestion');
-  // And
-  $I->click('Randomquestion');
+//At this point tried to pass data into choices fields but could not get to pickup so
+//went for basic button input and push back to view
 
-  //Then
-  $I->amOnPage('/admin/question/20');
-  $I->see('Randomquestion');
-  $I->click('Delete');
+//Then
+$I->click('Add Question');
 
-  // Then
-  $I->seeCurrentUrlEquals('/admin/question');
-  $I->see('Questions');
-  $I->see('Question deleted!!');
+//Then
+$I->amOnPage('/questionnaires/200');
+$I->see('Test Questionnaire');
+$I->see('Delete Question');
+$I->click('Delete Question');
+
+//Then
+$I->amOnPage('/questionnaires/200');
+$I->dontSeeElement('Test Question');

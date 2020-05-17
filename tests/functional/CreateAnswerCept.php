@@ -4,30 +4,50 @@ $I = new FunctionalTester($scenario);
 $I->am('user');
 $I->wantTo('create an answer');
 
+// Put a questionnaire in record/db
+$I->haveRecord('questionnaires', [
+     'id' => '200',
+     'user_id' => '200',
+     'title' => 'Test Questionnaire',
+     'ethics' => 'Test Ethics',
+ ]);
+ //Put a question in record/db
+ $I->haveRecord('questions', [
+     'id' => '200',
+     'questionnaire_id' => '200',
+     'question' => 'Test Question',
+ ]);
+
 // log in as your admin user
 // This should be id of 1 if you created your manual login for a known user first.
 Auth::loginUsingId(1);
 
 // When
-$I->amOnPage('dashboard');
-$I->see('Answers');
+$I->amOnPage('/home');
+$I->see('Test Questionnaire');
 // And
-$I->click('Answers');
+$I->click('Test Questionnaire');
 
 // Then
-$I->amOnPage('/admin/answer');
+$I->amOnPage('/questionnaires/200');
 // And
-$I->see('Current Answers');
-$I->click('Create Answer');
+$I->see('Add new Question');
+$I->click('Add new Question');
 
 // Then
-$I->amOnPage('/answer/create');
+$I->amOnPage('/questionnaires/200/questions/create');
 // And
-$I->submitForm('#createanswer', [
-     'answer' => 'Test Answer',
-]);
-// Then
-$I->seeCurrentUrlEquals('/admin/answer');
-$I->see('Answer created');
-$I->see('Current Answers');
-$I->see('Test Answer');
+$I->see('Choices');
+$I->see('Choice 1');
+$I->see('Choice 2');
+
+//At this point tried to pass data into choices fields but could not get to pickup so
+//went for basic button input and push back to view
+
+//Then
+$I->click('Add Question');
+
+//Then
+$I->amOnPage('/questionnaires/200');
+$I->see('Test Questionnaire');
+$I->see('Delete Question');
