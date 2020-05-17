@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<!-- Home view, SurveyKitty dashboard header, checks if logged in next -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,11 +14,12 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
+                    <!-- Button to link to creating a new questionnaire -->
                     <a href="/questionnaires/create" class="btn btn-primary">Create New Questionnaire</a>
                 </div>
             </div>
-
+            <!-- My Questionnaire header and next al questionnaires called in to vire, for each
+            questionnaire put title first, then the share url that can be used if system is deployed -->
             <div class="card mt-4">
                 <div class="card-header">My Questionnaires</div>
 

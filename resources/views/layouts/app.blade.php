@@ -39,7 +39,7 @@ body {
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                    <!-- Central nav link so can return to welcome screen -->
                     <a href="/">SurveyKitty</a>
 
 

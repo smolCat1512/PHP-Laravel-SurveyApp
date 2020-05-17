@@ -23,7 +23,6 @@ $I->see('Password');
 // And
 $I->click('Login');
 
-
 // Then
 $I->amOnPage('auth/login');
 $I->see('Login');
