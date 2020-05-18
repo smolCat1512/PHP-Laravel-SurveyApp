@@ -11,11 +11,20 @@
 |
 */
 
+use App\Mail\SurveyMail;
+use Illuminate\Support\Facades\Mail;
+
 /*
 *   Routes open to all users
 */
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/email', function () {
+    Mail::to('email@email.com')->send(new SurveyMail());
+
+    return new SurveyMail();
 });
 
 Route::get('/respondents', 'RespondentsController@index');
@@ -41,4 +50,5 @@ Route::delete('/questionnaires/{questionnaire}/questions/{question}', 'QuestionC
 // Survey routes for methods so pointing to correct controllers/methods
 Route::get('/surveys/{questionnaire}-{slug}', 'SurveyController@show');
 Route::post('/surveys/{questionnaire}-{slug}', 'SurveyController@store');
+// Route::get('/surveys/{questionnaire}-{slug}', 'SurveyController@csv');
 });
