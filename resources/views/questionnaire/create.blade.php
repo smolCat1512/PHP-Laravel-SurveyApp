@@ -35,10 +35,16 @@
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <!-- Selector form field to make questionnaire live, 0 not line, 1 is live -->
+                        <div class="form-group">
+                            {!! Form::label('live', 'Live Questionnaire:') !!}
+                            {!! Form::select('live', array('1' => '1', '2' => '0'), ['placeholder' => 'Select...']) !!}
+                            <small>1 is live, 0 is not live</small>
+                        </div>
                         <!-- Form submission button to create questionnaire -->
                         <button type="submit" class="btn btn-primary">Create Questionnaire</button>
                     </form>
-
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

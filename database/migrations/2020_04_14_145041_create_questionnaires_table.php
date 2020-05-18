@@ -18,6 +18,7 @@ class CreateQuestionnairesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('ethics');
+            $table->integer('live')->default(0);
             $table->timestamps();
         });
     }

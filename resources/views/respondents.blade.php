@@ -12,6 +12,7 @@ non logged in users can access and take surveys -->
             <div class="card-body">
                 <ul class="list-group">
                     @foreach($questionnaires as $questionnaire)
+                    @if($questionnaire->live == 1)
                     <li class="list-group-item">
                         <a href="{{ $questionnaire->path() }}">{{ $questionnaire->title }}</a>
                         <p>Click weblink below to take the survey please</p>
@@ -19,6 +20,7 @@ non logged in users can access and take surveys -->
                             {{ $questionnaire->publicPath() }}
                         </a>
                     </li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
